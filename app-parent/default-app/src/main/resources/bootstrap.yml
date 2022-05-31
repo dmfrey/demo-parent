@@ -1,0 +1,30 @@
+
+spring:
+  application:
+    name: default-app
+
+  cloud:
+
+    kubernetes:
+
+      discovery:
+        enabled: false
+
+---
+spring:
+
+  config:
+    activate:
+      on-cloud-platform: kubernetes
+
+  cloud:
+
+    kubernetes:
+
+      config:
+        name: demo-app
+        namespace: default
+
+      discovery:
+        enabled: true
+        all-namespaces: true

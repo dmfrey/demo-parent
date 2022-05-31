@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: default-app-deployment
+spec:
+  selector:
+    matchLabels:
+      app: default-app
+  template:
+    metadata:
+      labels:
+        app: default-app
+      annotations:
+        vault.hashicorp.com/agent-inject: 'true'
+        vault.hashicorp.com/agent-inject-status: 'update'
+        vault.hashicorp.com/role: 'internal-app'
+        vault.hashicorp.com/agent-inject-secret-application-kubernetes.yml: 'database/creds/default'
+#        vault.hashicorp.com/agent-inject-template-application-kubernetes.yml: |
+#          {{ with secret "database/creds/default" }}
+#          spring.datasource.url: postgresql://{{ .Data.data.username }}:{{ .Data.data.password }}@postgres:5432/postgres
+#          {{ end }}
+    spec:
+      containers:
+        - name: default-app
+          image: default-app:0.0.1-SNAPSHOT
+          ports:
+            - containerPort: 8080
+      serviceAccountName: internal-app

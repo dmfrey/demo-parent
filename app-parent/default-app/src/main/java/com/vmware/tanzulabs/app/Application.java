@@ -1,13 +1,13 @@
-package com.vmware.tanzulabs.demoparent;
+package com.vmware.tanzulabs.app;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DemoParentApplication {
+public class Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DemoParentApplication.class, args);
+		SpringApplication.run(Application.class, args);
 	}
 
 }

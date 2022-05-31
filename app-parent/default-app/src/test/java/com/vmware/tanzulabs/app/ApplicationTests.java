@@ -1,10 +1,10 @@
-package com.vmware.tanzulabs.demoparent;
+package com.vmware.tanzulabs.app;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class DemoParentApplicationTests {
+class ApplicationTests {
 
 	@Test
 	void contextLoads() {
