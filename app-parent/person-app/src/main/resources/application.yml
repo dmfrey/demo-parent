@@ -1,0 +1,70 @@
+debug: false
+
+logging.level:
+  org.springframework.data: DEBUG
+  org.springframework.web: DEBUG
+  com.vmware.tanzulabs.app: DEBUG
+
+spring:
+
+  application:
+    name: person-app
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+
+  cloud:
+
+    vault:
+      enabled: false
+
+  zipkin:
+    enabled: false
+
+management:
+  endpoints:
+    web.exposure.include: '*'
+  endpoint:
+    health:
+      show-details: ALWAYS
+    restart:
+      enabled: true
+
+---
+spring:
+
+  config:
+    activate:
+      on-profile: kubernetes
+
+    import: vault://
+
+  datasource:
+    url: jdbc:postgresql://person-app-db:5432/postgres
+
+  cloud:
+
+    vault:
+      enabled: true
+      fail-fast: true
+
+      config:
+        lifecycle:
+          enabled: true
+          min-renewal: 10m
+          expiry-threshold: 10m
+
+      kv.enabled: false
+
+      uri: http://vault.vault.svc:8200
+
+      authentication: KUBERNETES
+      kubernetes:
+        role: person-app
+        kubernetes-path: kubernetes
+
+      database:
+        enabled: true
+        role: person-app
+        backend: database

@@ -1,14 +1,16 @@
 package com.vmware.tanzulabs.app.persistence;
 
 import com.vmware.tanzulabs.app.service.Person;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.StreamSupport;
 
 import static java.util.stream.Collectors.toList;
 
-@Component
+@Repository
+@Transactional( readOnly = true )
 class PersonPersistenceService implements PersonPersistenceAdapter {
 
     private final PersonRepository personRepository;

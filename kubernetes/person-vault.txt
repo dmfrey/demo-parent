@@ -1,0 +1,25 @@
+$ vault policy write person-app - <<EOF
+path "database/creds/person-app" {
+  capabilities = ["read"]
+}
+EOF
+
+
+$ vault write auth/kubernetes/role/person-app \
+    bound_service_account_names=person-app-sa \
+    bound_service_account_namespaces=default \
+    policies=person-app \
+    ttl=24h
+
+$ vault write database/config/person-app-db \
+    plugin_name=postgresql-database-plugin \
+    allowed_roles="person-app" \
+    connection_url="postgresql://{{username}}:{{password}}@postgres.default:5432?sslmode=disable" \
+    username="postgres" \
+    password="admin123"
+
+$ vault write database/roles/person-app \
+    db_name=person-app-db \
+    creation_statements="CREATE ROLE \"{{name}}\" WITH LOGIN PASSWORD '{{password}}' VALID UNTIL '{{expiration}}';GRANT SELECT, UPDATE, INSERT ON ALL TABLES IN SCHEMA public TO \"{{name}}\";GRANT USAGE,  SELECT ON ALL SEQUENCES IN SCHEMA public TO \"{{name}}\";" \
+    default_ttl="1h" \
+    max_ttl="24h"

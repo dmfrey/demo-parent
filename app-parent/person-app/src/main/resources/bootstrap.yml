@@ -1,14 +1,22 @@
 
 spring:
-  application:
-    name: default-app
 
   cloud:
 
     kubernetes:
+      enabled: false
+
+      config:
+        enabled: false
 
       discovery:
         enabled: false
+
+    vault:
+      enabled: false
+
+  zipkin:
+    enabled: false
 
 ---
 spring:
@@ -20,9 +28,11 @@ spring:
   cloud:
 
     kubernetes:
+      enabled: true
 
       config:
-        name: demo-app
+        enabled: true
+        name: person-app
         namespace: default
 
       discovery:
