@@ -1,0 +1,7 @@
+package com.vmware.tanzulabs.app.application.out;
+
+public interface DeleteAllPersonsPort {
+
+    void deleteAll();
+
+}

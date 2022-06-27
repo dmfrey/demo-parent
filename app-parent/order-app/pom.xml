@@ -10,8 +10,8 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>person-app</artifactId>
-    <name>person-app</name>
+    <artifactId>order-app</artifactId>
+    <name>order-app</name>
 
     <dependencies>
 
@@ -31,7 +31,7 @@
                 <artifactId>jib-maven-plugin</artifactId>
                 <configuration>
                     <to>
-                      <image>dfrey501/person-app</image>
+                        <image>dfrey501/order-app</image>
                     </to>
                     <from>
                         <image>eclipse-temurin:17-jre</image>

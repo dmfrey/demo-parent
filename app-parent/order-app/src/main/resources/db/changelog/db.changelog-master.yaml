@@ -1,0 +1,20 @@
+databaseChangeLog:
+
+  - changeSet:
+      id: 1
+      author: test
+      changes:
+        - createTable:
+            tableName: orders
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: customer_id
+                  type: varchar(250)
+                  constraints:
+                    nullable: false

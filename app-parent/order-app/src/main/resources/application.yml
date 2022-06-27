@@ -5,10 +5,13 @@ logging.level:
   org.springframework.web: DEBUG
   com.vmware.tanzulabs.app: DEBUG
 
+server:
+  port: 8081
+
 spring:
 
   application:
-    name: person-app
+    name: order-app
 
   jpa:
     hibernate:
@@ -34,9 +37,6 @@ management:
     restart:
       enabled: true
 
-webservice:
-  order-resource-url: http://localhost:8081
-
 ---
 spring:
 
@@ -45,10 +45,10 @@ spring:
       on-profile: kubernetes
 
   datasource:
-    url: jdbc:postgresql://person-app-db:5432/postgres
+    url: jdbc:postgresql://order-app-db:5432/postgres
 
-webservice:
-  order-resource-url: http://order-app:8080
+server:
+  port: 8080
 
 ---
 spring:
@@ -59,10 +59,10 @@ spring:
 
   zipkin:
     enabled: true
-    base-url: http://tempo:9411
+    base-url: http://monitoring-tempo-1:9411
 
-webservice:
-  order-resource-url: http://order-app:8080
+server:
+  port: 8080
 
 ---
 spring:
@@ -91,11 +91,11 @@ spring:
 
       authentication: KUBERNETES
       kubernetes:
-        role: person-app
+        role: order-app
         kubernetes-path: kubernetes
 
       database:
         enabled: true
-        role: person-app
+        role: order-app
         backend: database
 

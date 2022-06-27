@@ -1,0 +1,25 @@
+$ vault policy write order-app - <<EOF
+path "database/creds/order-app" {
+  capabilities = ["read"]
+}
+EOF
+
+
+$ vault write auth/kubernetes/role/order-app \
+    bound_service_account_names=order-app-sa \
+    bound_service_account_namespaces=default \
+    policies=order-app \
+    ttl=24h
+
+$ vault write database/config/order-app-db \
+    plugin_name=postgresql-database-plugin \
+    allowed_roles="order-app" \
+    connection_url="postgresql://{{username}}:{{password}}@postgres.default:5432?sslmode=disable" \
+    username="postgres" \
+    password="admin123"
+
+$ vault write database/roles/order-app \
+    db_name=order-app-db \
+    creation_statements="CREATE ROLE \"{{name}}\" WITH LOGIN PASSWORD '{{password}}' VALID UNTIL '{{expiration}}';GRANT SELECT, UPDATE, INSERT ON ALL TABLES IN SCHEMA public TO \"{{name}}\";GRANT USAGE,  SELECT ON ALL SEQUENCES IN SCHEMA public TO \"{{name}}\";" \
+    default_ttl="1h" \
+    max_ttl="24h"
