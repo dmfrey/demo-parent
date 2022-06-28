@@ -1,5 +1,5 @@
 name: person-app-workflow
-# This is a caller workflow that calls a reusable workflow for non-containized projects.
+
 on:
   push:
     branches:
@@ -11,59 +11,41 @@ on:
 
 jobs:
 
-  build-test-package:
-    name: Build & Test Source
+  checkout-source-job:
+    name: Checkout Source flow
+    uses: legos/legos-pipeline/.github/workflows/_checkout-source-action.yml@main
 
-    runs-on: enterprise
+  checkout-settings-job:
+    name: Checkout Settings flow
+    uses: legos/legos-pipeline/.github/workflows/_checkout-settings-action.yml@main
 
-    container:
-      image: harbor.cp.az.km.spaceforce.mil/ds9/ubuntu-base-jdk17:0.0.1
+  build-test-job:
+    name: Build, Test flow
+    needs: [ checkout-source-job, checkout-settings-job ]
+    uses: legos/legos-pipeline/.github/workflows/_build-test-action.yml@main
+    secrets:
+      NEXUS_USERNAME: ${{ secrets.AD_USER }}
+      NEXUS_PASSWORD: ${{ secrets.AD_PASS }}
+      SUBMODULE: "person-app"
 
-    env:
-      NODE_EXTRA_CA_CERTS: /etc/ssl/certs/ca-certificates.crt
-      NEXUS_USERNAME: ${{ secrets.NEXUS_USERNAME }}
-      NEXUS_PASSWORD: ${{ secrets.NEXUS_PASSWORD }}
+#  scan-source-job:
+#    name: Scan Source flow
+#    needs: [ checkout-source-job ]
+#    uses: legos/legos-pipeline/.github/workflows/_scan-source-action.yml@main
+#
+#  scan-results-job:
+#    name: Upload Scan Results
+#    needs: [ build-test-job, scan-source-job ]
+#    uses: legos/legos-pipeline/.github/workflows/_scan-results-action.yml@main
+#    secrets:
+#      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+#      NEXUS_USERNAME: ${{ secrets.AD_USER }}
+#      NEXUS_PASSWORD: ${{ secrets.AD_PASS }}
 
-    steps:
-
-      - name: Download Maven Settings
-        uses: actions/download-artifact@v2
-        with:
-          name: maven-settings
-          path: maven-settings
-
-      - name: Download source
-        uses: actions/download-artifact@v2
-        with:
-          name: source
-          path: source
-
-      - name: Setup Maven Repository Cache
-        uses: actions/cache@v2
-        with:
-          path: ~/.m2/repository
-          key: ${{ runner.os }}-owasp-${{ hashFiles('**/pom.xml') }}
-          restore-keys: |
-            ${{ runner.os }}-owasp-
-
-      - name: Build, Test, Package source
-        if: |
-          contains(github.ref, 'develop') ||
-          contains(github.ref, 'release')
-        run: |
-          cd source
-          mvn -B -s ../maven-settings/settings.xml -P lego-nexus --no-transfer-progress -pl :person-app verify package
-          cd ..
-
-      - name: Build, Test, Verify source
-        if: contains(github.ref, 'feature')
-        run: |
-          cd source
-          mvn -B -s ../maven-settings/settings.xml -P lego-nexus --no-transfer-progress -pl :person-app verify
-          cd ..
-
-      - name: Upload source to Artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          name: source
-          path: source
+  publish-artifact-job:
+    name: Publish Artifact
+    needs: [ build-test-job ]
+    uses: legos/legos-pipeline/.github/workflows/_publish-artifact-action.yml@main
+    secrets:
+      NEXUS_USERNAME: ${{ secrets.AD_USER }}
+      NEXUS_PASSWORD: ${{ secrets.AD_PASS }}
