@@ -24,7 +24,8 @@ jobs:
     needs: [ checkout-source-job, checkout-settings-job ]
     uses: legos/legos-pipeline/.github/workflows/_build-test-action.yml@main
     with:
-      SUBMODULE: "person-app"
+      buildImageUrl: harbor.cp.az.km.spaceforce.mil/ds9/ubuntu-base-jdk17:0.0.1
+      submodule: "person-app"
     secrets:
       NEXUS_USERNAME: ${{ secrets.AD_USER }}
       NEXUS_PASSWORD: ${{ secrets.AD_PASS }}
@@ -47,6 +48,8 @@ jobs:
     name: Publish Artifact
     needs: [ build-test-job ]
     uses: legos/legos-pipeline/.github/workflows/_publish-artifact-action.yml@main
+    with:
+      buildImageUrl: harbor.cp.az.km.spaceforce.mil/ds9/ubuntu-base-jdk17:0.0.1
     secrets:
       NEXUS_USERNAME: ${{ secrets.AD_USER }}
       NEXUS_PASSWORD: ${{ secrets.AD_PASS }}
