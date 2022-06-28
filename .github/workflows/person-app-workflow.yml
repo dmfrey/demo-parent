@@ -1,4 +1,4 @@
-name: atlas-avroschema-loader-reusable-caller-sast-and-publish
+name: person-app-workflow
 # This is a caller workflow that calls a reusable workflow for non-containized projects.
 on:
   push:
