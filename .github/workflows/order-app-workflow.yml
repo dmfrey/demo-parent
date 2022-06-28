@@ -23,10 +23,11 @@ jobs:
     name: Build, Test flow
     needs: [ checkout-source-job, checkout-settings-job ]
     uses: legos/legos-pipeline/.github/workflows/_build-test-action.yml@main
+    with:
+      SUBMODULE: "order-app"
     secrets:
       NEXUS_USERNAME: ${{ secrets.AD_USER }}
       NEXUS_PASSWORD: ${{ secrets.AD_PASS }}
-      SUBMODULE: "order-app"
 
   #  scan-source-job:
   #    name: Scan Source flow
