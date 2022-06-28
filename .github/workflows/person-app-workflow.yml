@@ -5,7 +5,7 @@ on:
     branches:
       - 'main'
     paths:
-      - 'app-parent/person-app'
+      - 'app-parent/person-app/**'
 
 jobs:
   call-sast-workflow:
