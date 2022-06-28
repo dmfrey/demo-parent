@@ -3,7 +3,7 @@ name: person-app-workflow
 on:
   push:
     branches:
-      - 'master' 
+      - 'main'
     paths:
       - 'app-parent/person-app'
 

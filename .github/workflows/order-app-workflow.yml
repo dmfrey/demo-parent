@@ -3,7 +3,7 @@ name: order-app-workflow
 on:
   push:
     branches:
-      - 'master' 
+      - 'main'
     paths:
       - 'app-parent/order-app'
 
