@@ -3,29 +3,67 @@ name: order-app-workflow
 on:
   push:
     branches:
-      - 'main'
+      - release/*
+      - develop
+      - feature/*
     paths:
       - 'app-parent/order-app/**'
 
 jobs:
-  call-sast-workflow:
-    uses: shredder/ds9-templates/.github/workflows/maven-sast-and-publish-called-reusable-workflow.yml@atlas-modified
-    with:
-      repositoryOwner: ${{ github.repository_owner }}
-      repositoryName: ${{ github.event.repository.name }}
-      sonarSources: app-parent/order-app/src/main/
-      sonarTestPath: app-parent/order-app/src/test/
-      sonarJavaLibrariesPath: target/
-      branch: master      
-      owaspSources:  artifacts/source
-      buildImageUrl: harbor.cp.az.km.spaceforce.mil/ds9/ubuntu-base-jdk11:0.0.1
-      commitSha:  ${{ github.sha }}
-    secrets:
-      token: ${{ secrets.GHA_CLONE_REPOS_PAT }}
-      nexus_username: ${{ secrets.AD_USER }} 
-      nexus_password:  ${{ secrets.AD_PASS }}
-      owasp_dc_db_pass: ${{ secrets.OWASP_DC_DB_PASS}} 
-      gh_issues_db_addr: ${{secrets.GH_ISSUES_DB_ADDR}}
-      gh_issues_user: ${{secrets.GH_ISSUES_USER}}
-      gh_issues_pass: ${{secrets.GH_ISSUES_PASS}}
-      sonar_token: ${{ secrets.SONAR_TOKEN }}
+
+  build-test-package:
+    name: Build & Test Source
+
+    runs-on: enterprise
+
+    container:
+      image: harbor.cp.az.km.spaceforce.mil/ds9/ubuntu-base-jdk17:0.0.1
+
+    env:
+      NODE_EXTRA_CA_CERTS: /etc/ssl/certs/ca-certificates.crt
+      NEXUS_USERNAME: ${{ secrets.NEXUS_USERNAME }}
+      NEXUS_PASSWORD: ${{ secrets.NEXUS_PASSWORD }}
+
+    steps:
+
+      - name: Download Maven Settings
+        uses: actions/download-artifact@v2
+        with:
+          name: maven-settings
+          path: maven-settings
+
+      - name: Download source
+        uses: actions/download-artifact@v2
+        with:
+          name: source
+          path: source
+
+      - name: Setup Maven Repository Cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-owasp-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-owasp-
+
+      - name: Build, Test, Package source
+        if: |
+          contains(github.ref, 'develop') ||
+          contains(github.ref, 'release')
+        run: |
+          cd source
+          mvn -B -s ../maven-settings/settings.xml -P lego-nexus --no-transfer-progress -pl :order-app verify package
+          cd ..
+
+      - name: Build, Test, Verify source
+        if: contains(github.ref, 'feature')
+        run: |
+          cd source
+          mvn -B -s ../maven-settings/settings.xml -P lego-nexus --no-transfer-progress -pl :order-app verify
+          cd ..
+
+      - name: Upload source to Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: source
+          path: source
