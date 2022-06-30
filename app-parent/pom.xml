@@ -122,6 +122,34 @@
             </plugins>
 
         </pluginManagement>
+
     </build>
+
+    <profiles>
+
+        <profile>
+
+            <id>lego-nexus</id>
+
+            <distributionManagement>
+
+                <snapshotRepository>
+                    <id>c1d-nexus-snapshots</id>
+                    <name>Legos Test Snapshot Distribution Repository</name>
+                    <uniqueVersion>false</uniqueVersion>
+                    <url>https://nexus.km.spaceforce.mil/repository/legos-test-hosted/</url>
+                </snapshotRepository>
+
+                <repository>
+                    <id>c1d-nexus-releases</id>
+                    <name>Legos Test Release Distribution Repository</name>
+                    <url>https://nexus.km.spaceforce.mil/repository/legos-test-hosted/</url>
+                </repository>
+
+            </distributionManagement>
+
+        </profile>
+
+    </profiles>
 
 </project>
