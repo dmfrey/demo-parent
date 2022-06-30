@@ -55,7 +55,6 @@ jobs:
     with:
       buildImageUrl: harbor.cp.az.km.spaceforce.mil/tc/ubuntu:22.04-openjdk17-build
       submodule: "person-app"
-      repo: "c1d-central::https://nexus.km.spaceforce.mil/repository/legos-test-hosted/"
     secrets:
       NEXUS_USERNAME: ${{ secrets.AD_USER }}
       NEXUS_PASSWORD: ${{ secrets.AD_PASS }}
