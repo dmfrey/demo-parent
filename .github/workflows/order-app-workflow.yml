@@ -28,7 +28,7 @@ jobs:
     needs: [ checkout-source-job, checkout-settings-job ]
     uses: legos/legos-pipeline/.github/workflows/_scan-source-owasp-action.yml@main
     with:
-      buildImageUrl: harbor.cp.az.km.spaceforce.mil/tc/ubuntu:22.04-openjdk17-build
+      buildImageUrl: harbor.cp.az.km.spaceforce.mil/tc/ubuntu:22.04-openjdk11-build
       submodule: "order-app"
     secrets:
       NEXUS_USERNAME: ${{ secrets.AD_USER }}
@@ -39,7 +39,7 @@ jobs:
     needs: [ checkout-source-job ]
     uses: legos/legos-pipeline/.github/workflows/_scan-source-gitleaks-action.yml@main
     with:
-      buildImageUrl: harbor.cp.az.km.spaceforce.mil/tc/ubuntu:22.04-openjdk17-build
+      buildImageUrl: harbor.cp.az.km.spaceforce.mil/tc/ubuntu:22.04-openjdk11-build
 
   build-test-job:
     name: Build, Test flow
