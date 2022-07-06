@@ -27,6 +27,7 @@
                 <configuration>
                     <image>
                         <name>harbor.cp.az.km.spaceforce.mil/legos-test/${project.artifactId}:${project.version}</name>
+                        <publish>true</publish>
                     </image>
                 </configuration>
             </plugin>
