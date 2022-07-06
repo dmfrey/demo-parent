@@ -7,6 +7,7 @@ on:
       - develop
       - feature/*
     paths:
+      - 'app-parent/pom.xml'
       - 'app-parent/person-app/**'
 
 jobs:
