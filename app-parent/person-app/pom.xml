@@ -29,6 +29,13 @@
                         <name>harbor.cp.az.km.spaceforce.mil/legos-test/${project.artifactId}:${project.version}</name>
                         <publish>true</publish>
                     </image>
+                    <docker>
+                        <publishRegistry>
+                            <username>${HARBOR_USERNAME}</username>
+                            <password>${HARBOR_PASSWORD}</password>
+                            <url>${HARBOR_URL}</url>
+                        </publishRegistry>
+                    </docker>
                 </configuration>
             </plugin>
 
