@@ -51,7 +51,7 @@ spec:
             periodSeconds: 5
           env:
             - name: SPRING_PROFILES_ACTIVE
-              value: "kubernetes"
+              value: "default"
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
