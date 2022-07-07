@@ -66,10 +66,10 @@ resources:
   # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
   limits:
     cpu: 500m
-    memory: 512Mi
+    memory: 1024Mi
   requests:
     cpu: 500m
-    memory: 512Mi
+    memory: 1024Mi
 
 
 autoscaling:
