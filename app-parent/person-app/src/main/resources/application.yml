@@ -44,11 +44,19 @@ spring:
     activate:
       on-profile: kubernetes
 
+webservice:
+  order-resource-url: http://order-app:8080
+
+---
+spring:
+
+  config:
+    activate:
+      on-profile: postgres
+
   datasource:
     url: jdbc:postgresql://person-app-db:5432/postgres
 
-webservice:
-  order-resource-url: http://order-app:8080
 
 ---
 spring:
