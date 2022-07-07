@@ -6,7 +6,7 @@ replicaCount: 1
 
 image:
   repository: harbor.cp.az.km.spaceforce.mil/legos-test/order-app
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
   tag: "latest"
 
