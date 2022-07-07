@@ -45,7 +45,7 @@ spring:
       on-profile: kubernetes
 
 webservice:
-  order-resource-url: http://order-app:8080
+  order-resource-url: http://order-app
 
 ---
 spring:
