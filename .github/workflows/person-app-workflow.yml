@@ -88,4 +88,5 @@ jobs:
       HARBOR_USERNAME: ${{ secrets.HARBOR_USER }}
       HARBOR_PASSWORD: ${{ secrets.HARBOR_PASS }}
       GITHUB_USERNAME: ${{ secrets.AD_USER }}
+      GITHUB_PAT: ${{ secrets.GHA_CLONE_REPOS_PAT }}
 
