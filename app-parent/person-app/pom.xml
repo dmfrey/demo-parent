@@ -24,6 +24,15 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <docker>
+                        <publishRegistry>
+                            <username>${HARBOR_USERNAME}</username>
+                            <password>${HARBOR_PASSWORD}</password>
+                            <url>${HARBOR_URL}</url>
+                        </publishRegistry>
+                    </docker>
+                </configuration>
             </plugin>
 
             <plugin>
