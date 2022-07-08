@@ -25,10 +25,6 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <image>
-                        <name>harbor.cp.az.km.spaceforce.mil/legos-test/order-app:latest</name>
-                        <publish>true</publish>
-                    </image>
                     <docker>
                         <publishRegistry>
                             <username>${HARBOR_USERNAME}</username>
