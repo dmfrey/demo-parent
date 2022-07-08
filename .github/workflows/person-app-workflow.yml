@@ -87,3 +87,5 @@ jobs:
       NEXUS_PASSWORD: ${{ secrets.AD_PASS }}
       HARBOR_USERNAME: ${{ secrets.HARBOR_USER }}
       HARBOR_PASSWORD: ${{ secrets.HARBOR_PASS }}
+      GITHUB_USERNAME: ${{ secrets.AD_USER }}
+
