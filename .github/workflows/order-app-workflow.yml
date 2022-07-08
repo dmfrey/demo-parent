@@ -53,11 +53,6 @@ jobs:
       NEXUS_USERNAME: ${{ secrets.AD_USER }}
       NEXUS_PASSWORD: ${{ secrets.AD_PASS }}
 
-  #  scan-source-job:
-  #    name: Scan Source flow
-  #    needs: [ checkout-source-job ]
-  #    uses: legos/legos-pipeline/.github/workflows/_scan-source-action.yml@main
-  #
   #  scan-results-job:
   #    name: Upload Scan Results
   #    needs: [ build-test-job, scan-source-job ]
@@ -85,6 +80,7 @@ jobs:
     with:
       buildImageUrl: harbor.cp.az.km.spaceforce.mil/tc/ubuntu:22.04-openjdk17-build
       submodule: "order-app"
+      harborRepo: "legos-test"
     secrets:
       NEXUS_USERNAME: ${{ secrets.AD_USER }}
       NEXUS_PASSWORD: ${{ secrets.AD_PASS }}
