@@ -10,8 +10,8 @@ spring:
     kubernetes:
 
       config:
-        name: person-app
-        namespace: dfrey-dev
         sources:
+          - namespace: dfrey-dev
+            name: person-app
           - namespace: dfrey-dev-config
             name: person-app-cm
