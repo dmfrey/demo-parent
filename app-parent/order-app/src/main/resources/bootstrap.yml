@@ -10,9 +10,9 @@ spring:
     kubernetes:
 
       config:
+        name: order-app
+        namespace: dfrey-dev
         sources:
-          - namespace: dfrey-dev
-            name: order-app
           - namespace: dfrey-dev-config
             name: order-app-cm
 
