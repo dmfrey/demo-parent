@@ -38,39 +38,6 @@ webservice:
 #
 #  config:
 #    activate:
-#      on-cloud-platform: kubernetes
-#
-#  cloud:
-#
-#    kubernetes:
-#
-#      config:
-#        name: person-app
-#        namespace: dfrey-dev
-#        sources:
-#          - namespace: dfrey-dev-config
-#            name: person-app-cm
-#
-#      discovery:
-#        enabled: true
-#        all-namespaces: true
-
-#---
-#spring:
-#
-#  config:
-#    activate:
-#      on-profile: postgres
-#
-#  datasource:
-#    url: jdbc:postgresql://person-app-db:5432/person-app-db
-#
-#
-#---
-#spring:
-#
-#  config:
-#    activate:
 #      on-profile: docker
 #
 #  zipkin:
