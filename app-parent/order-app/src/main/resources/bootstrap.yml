@@ -1,40 +1,20 @@
-#
-#spring:
-#
-#  cloud:
-#
-#    kubernetes:
-#      enabled: false
-#
-#      config:
-#        enabled: false
-#
-#      discovery:
-#        enabled: false
-#
-#    vault:
-#      enabled: false
-#
-#  zipkin:
-#    enabled: false
-#
-#---
-#spring:
-#
-#  config:
-#    activate:
-#      on-cloud-platform: kubernetes
-#
-#  cloud:
-#
-#    kubernetes:
-#      enabled: true
-#
-#      config:
-#        enabled: true
-#        name: order-app
-#        namespace: default
-#
-#      discovery:
-#        enabled: true
-#        all-namespaces: true
+---
+spring:
+
+  config:
+    activate:
+      on-cloud-platform: kubernetes
+
+  cloud:
+
+    kubernetes:
+
+      config:
+        name: order-app
+        namespace: dfrey-dev
+        sources:
+          - namespace: dfrey-dev-config
+            name: order-app-cm
+
+server:
+  port: 8080

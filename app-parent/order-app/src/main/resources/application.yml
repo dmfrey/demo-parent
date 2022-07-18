@@ -32,31 +32,31 @@ management:
     restart:
       enabled: true
 
----
-spring:
-
-  config:
-    activate:
-      on-cloud-platform: kubernetes
-
-  cloud:
-
-    kubernetes:
-
-      config:
-        name: order-app
-        namespace: dfrey-dev
-        sources:
-          - namespace: dfrey-dev-config
-            name: order-app-cm
-
+#---
+#spring:
+#
+#  config:
+#    activate:
+#      on-cloud-platform: kubernetes
+#
+#  cloud:
+#
+#    kubernetes:
+#
+#      config:
+#        name: order-app
+#        namespace: dfrey-dev
+#        sources:
+#          - namespace: dfrey-dev-config
+#            name: order-app-cm
+#
 #      discovery:
 #        enabled: true
 #        all-namespaces: true
-
-server:
-  port: 8080
-
+#
+#server:
+#  port: 8080
+#
 #---
 #spring:
 #
