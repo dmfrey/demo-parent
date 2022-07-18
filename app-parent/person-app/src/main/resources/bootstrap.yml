@@ -1,40 +1,40 @@
-
-spring:
-
-  cloud:
-
-    kubernetes:
-      enabled: false
-
-      config:
-        enabled: false
-
-      discovery:
-        enabled: false
-
-    vault:
-      enabled: false
-
-  zipkin:
-    enabled: false
-
----
-spring:
-
-  config:
-    activate:
-      on-cloud-platform: kubernetes
-
-  cloud:
-
-    kubernetes:
-      enabled: true
-
-      config:
-        enabled: true
-        name: person-app
-        namespace: default
-
-      discovery:
-        enabled: true
-        all-namespaces: true
+#
+#spring:
+#
+#  cloud:
+#
+#    kubernetes:
+#      enabled: false
+#
+#      config:
+#        enabled: false
+#
+#      discovery:
+#        enabled: false
+#
+#    vault:
+#      enabled: false
+#
+#  zipkin:
+#    enabled: false
+#
+#---
+#spring:
+#
+#  config:
+#    activate:
+#      on-cloud-platform: kubernetes
+#
+#  cloud:
+#
+#    kubernetes:
+#      enabled: true
+#
+#      config:
+#        enabled: true
+#        name: person-app
+#        namespace: default
+#
+#      discovery:
+#        enabled: true
+#        all-namespaces: true

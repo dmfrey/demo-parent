@@ -14,11 +14,6 @@ spring:
     hibernate:
       ddl-auto: none
 
-  cloud:
-
-    vault:
-      enabled: false
-
   mvc:
     log-request-details: true
 
@@ -42,68 +37,80 @@ spring:
 
   config:
     activate:
-      on-profile: kubernetes
-
-webservice:
-  order-resource-url: http://order-app
-
----
-spring:
-
-  config:
-    activate:
-      on-profile: postgres
-
-  datasource:
-    url: jdbc:postgresql://person-app-db:5432/postgres
-
-
----
-spring:
-
-  config:
-    activate:
-      on-profile: docker
-
-  zipkin:
-    enabled: true
-    base-url: http://tempo:9411
-
-webservice:
-  order-resource-url: http://order-app:8080
-
----
-spring:
-
-  config:
-    activate:
-      on-profile: vault
-
-    import: vault://
+      on-cloud-platform: kubernetes
 
   cloud:
 
-    vault:
-      enabled: true
-      fail-fast: true
+    kubernetes:
 
       config:
-        lifecycle:
-          enabled: true
-          min-renewal: 10m
-          expiry-threshold: 10m
+        name: person-app
+        namespace: dfrey-dev
+        sources:
+          - namespace: dfrey-dev-config
+            name: person-app-cm
 
-      kv.enabled: false
-
-      uri: http://vault.vault.svc:8200
-
-      authentication: KUBERNETES
-      kubernetes:
-        role: person-app
-        kubernetes-path: kubernetes
-
-      database:
+      discovery:
         enabled: true
-        role: person-app
-        backend: database
+        all-namespaces: true
+
+#---
+#spring:
+#
+#  config:
+#    activate:
+#      on-profile: postgres
+#
+#  datasource:
+#    url: jdbc:postgresql://person-app-db:5432/person-app-db
+#
+#
+#---
+#spring:
+#
+#  config:
+#    activate:
+#      on-profile: docker
+#
+#  zipkin:
+#    enabled: true
+#    base-url: http://tempo:9411
+#
+#webservice:
+#  order-resource-url: http://order-app:8080
+#
+#---
+#spring:
+#
+#  config:
+#    activate:
+#      on-profile: vault
+#
+#    import: vault://
+#
+#  cloud:
+#
+#    vault:
+#      enabled: true
+#      fail-fast: true
+#
+#      config:
+#        lifecycle:
+#          enabled: true
+#          min-renewal: 10m
+#          expiry-threshold: 10m
+#
+#      kv.enabled: false
+#
+#      uri: http://vault.vault.svc:8200
+#
+#      authentication: KUBERNETES
+#      kubernetes:
+#        role: person-app
+#        kubernetes-path: kubernetes
+#
+#      database:
+#        enabled: true
+#        role: person-app
+#        backend: database
 
