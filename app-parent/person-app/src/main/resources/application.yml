@@ -32,24 +32,24 @@ management:
 webservice:
   order-resource-url: http://localhost:8081
 
----
-spring:
-
-  config:
-    activate:
-      on-cloud-platform: kubernetes
-
-  cloud:
-
-    kubernetes:
-
-      config:
-        name: person-app
-        namespace: dfrey-dev
-        sources:
-          - namespace: dfrey-dev-config
-            name: person-app-cm
-
+#---
+#spring:
+#
+#  config:
+#    activate:
+#      on-cloud-platform: kubernetes
+#
+#  cloud:
+#
+#    kubernetes:
+#
+#      config:
+#        name: person-app
+#        namespace: dfrey-dev
+#        sources:
+#          - namespace: dfrey-dev-config
+#            name: person-app-cm
+#
 #      discovery:
 #        enabled: true
 #        all-namespaces: true
