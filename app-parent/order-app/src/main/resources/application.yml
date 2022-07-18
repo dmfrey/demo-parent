@@ -50,9 +50,9 @@ spring:
           - namespace: dfrey-dev-config
             name: order-app-cm
 
-      discovery:
-        enabled: true
-        all-namespaces: true
+#      discovery:
+#        enabled: true
+#        all-namespaces: true
 
 server:
   port: 8080
