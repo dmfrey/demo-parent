@@ -33,19 +33,6 @@ management:
 webservice:
   order-resource-url: http://localhost:8081
 
----
-spring:
-
-  config:
-    activate:
-      on-cloud-platform: kubernetes
-
-  cloud:
-
-    kubernetes:
-
-      config:
-        namespace: dfrey-dev
 
 #---
 #spring:

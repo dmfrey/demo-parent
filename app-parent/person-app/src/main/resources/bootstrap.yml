@@ -12,6 +12,5 @@ spring:
       config:
         name: person-app
         sources:
-          - name: person-app
           - namespace: dfrey-dev-config
             name: person-app-cm
