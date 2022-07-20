@@ -24,16 +24,16 @@ jobs:
     with:
       buildImageUrl: harbor.cp.az.km.spaceforce.mil/ds9/ubuntu-base:0.0.1
 
-  scan-source-owasp-job:
-    name: Scan Source flow
-    needs: [ checkout-source-job, checkout-settings-job ]
-    uses: legos/legos-pipeline/.github/workflows/_scan-source-owasp-action.yml@main
-    with:
-      buildImageUrl: harbor.cp.az.km.spaceforce.mil/tc/ubuntu:22.04-openjdk17-build
-      submodule: "person-app"
-    secrets:
-      NEXUS_USERNAME: ${{ secrets.AD_USER }}
-      NEXUS_PASSWORD: ${{ secrets.AD_PASS }}
+#  scan-source-owasp-job:
+#    name: Scan Source flow
+#    needs: [ checkout-source-job, checkout-settings-job ]
+#    uses: legos/legos-pipeline/.github/workflows/_scan-source-owasp-action.yml@main
+#    with:
+#      buildImageUrl: harbor.cp.az.km.spaceforce.mil/tc/ubuntu:22.04-openjdk17-build
+#      submodule: "person-app"
+#    secrets:
+#      NEXUS_USERNAME: ${{ secrets.AD_USER }}
+#      NEXUS_PASSWORD: ${{ secrets.AD_PASS }}
 
   scan-source-gitleaks-job:
     name: Scan Source flow
@@ -44,7 +44,7 @@ jobs:
 
   build-test-job:
     name: Build, Test flow
-    needs: [ scan-source-owasp-job, scan-source-gitleaks-job ]
+    needs: [  scan-source-gitleaks-job ]  # scan-source-owasp-job,
     uses: legos/legos-pipeline/.github/workflows/_build-test-action.yml@main
     with:
       buildImageUrl: harbor.cp.az.km.spaceforce.mil/tc/ubuntu:22.04-openjdk17-build
