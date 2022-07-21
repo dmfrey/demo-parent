@@ -14,7 +14,7 @@ jobs:
 
   simplified-job:
     name: Simplified Build and Publish Flow
-    uses: legos/legos-pipeline/.github/workflows/_simplfied-action.yml@main
+    uses: legos/legos-pipeline/.github/workflows/_simplified-action.yml@main
     with:
       buildImageUrl: harbor.cp.az.km.spaceforce.mil/ds9/ubuntu-base:0.0.1
       submodule: "person-app"
