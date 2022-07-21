@@ -30,20 +30,6 @@ management:
 webservice:
   order-resource-url: http://localhost:8081
 
-
----
-spring:
-
-  config:
-    activate:
-      on-cloud-platform: kubernetes
-
-  datasource:
-    url: jdbc:postgresql://person-app-db:5432/person-app-db
-
-webservice:
-  order-resource-url: http://order-app
-
 #---
 #spring:
 #

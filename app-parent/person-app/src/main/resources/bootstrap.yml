@@ -1,0 +1,26 @@
+---
+spring:
+  
+  config:
+    activate:
+      on-cloud-platform: kubernetes
+
+  datasource:
+    url: jdbc:postgresql://person-app-db:5432/person-app-db
+
+  cloud:
+    
+    kubernetes:
+      
+      reload:
+        enabled: true
+        monitoring-config-maps: true
+
+      config:
+        name: person-app
+        sources:
+          - namespace: dfrey-dev-config
+            name: person-app-cm
+
+webservice:
+  order-resource-url: http://order-app
