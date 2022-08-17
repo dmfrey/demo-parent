@@ -65,7 +65,7 @@ jobs:
 
   build-test-job:
     name: Build, Test flow
-    needs: [  scan-source-gitleaks-job ]  # scan-source-owasp-job,
+    needs: [ scan-source-owasp-job, scan-source-gitleaks-job ]
     uses: legos/legos-pipeline/.github/workflows/_build-test-action.yml@main
     with:
       buildImageUrl: harbor.cp.az.km.spaceforce.mil/tc/ubuntu:22.04-openjdk17-build
@@ -110,4 +110,3 @@ jobs:
       HARBOR_PASSWORD: ${{ secrets.HARBOR_PASS }}
       GITHUB_USERNAME: ${{ secrets.AD_USER }}
       GITHUB_PAT: ${{ secrets.GHA_CLONE_REPOS_PAT }}
-
