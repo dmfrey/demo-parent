@@ -21,9 +21,6 @@ spring:
   mvc:
     log-request-details: true
 
-  zipkin:
-    enabled: false
-
 management:
   endpoints:
     web.exposure.include: '*'
