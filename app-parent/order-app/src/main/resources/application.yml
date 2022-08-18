@@ -6,9 +6,6 @@ logging.level:
   org.springframework.web: DEBUG
   com.vmware.tanzulabs.app: DEBUG
 
-server:
-  port: 8081
-
 spring:
 
   application:
@@ -29,6 +26,17 @@ management:
       show-details: ALWAYS
     restart:
       enabled: true
+
+---
+spring:
+
+  config:
+    activate:
+      on-profile: local
+
+server:
+  port: 8081
+
 
 #---
 #spring:
