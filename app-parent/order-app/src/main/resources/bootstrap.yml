@@ -22,6 +22,3 @@ spring:
           - name: order-app
           - namespace: dfrey-dev-config
             name: order-app-cm
-
-server:
-  port: 8080
