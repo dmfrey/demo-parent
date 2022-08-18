@@ -18,7 +18,3 @@ spring:
 
       config:
         name: order-app
-        sources:
-          - name: order-app
-          - namespace: dfrey-dev-config
-            name: order-app-cm
