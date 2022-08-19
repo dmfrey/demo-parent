@@ -18,10 +18,6 @@ spring:
 
       config:
         name: person-app
-        namespace: dfrey-dev
-        sources:
-          - namespace: dfrey-dev-config
-            name: person-app-cm
 
 webservice:
   order-resource-url: http://order-app
