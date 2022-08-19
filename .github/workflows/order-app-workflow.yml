@@ -7,6 +7,7 @@ on:
       - develop
       - feature/*
     paths:
+      - '.github/workflows/order-app-workflow.yml'
       - 'pom.xml'
       - 'app-parent/pom.xml'
       - 'app-parent/order-app/**'
