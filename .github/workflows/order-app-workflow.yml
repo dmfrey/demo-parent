@@ -19,6 +19,7 @@ jobs:
     uses: legos/legos-pipeline/.github/workflows/_checkout-source-action.yml@main
     with:
       buildImageUrl: harbor.cp.az.km.spaceforce.mil/ds9/ubuntu-base:0.0.1
+      commitSha: ${{ github.sha }}
     secrets:
       token: ${{ secrets.GHA_CLONE_REPOS_PAT }}
 
