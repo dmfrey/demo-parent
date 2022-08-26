@@ -1,0 +1,8 @@
+request:
+  method: GET
+  url: /orders/2
+response:
+  status: 200
+  body: []
+  headers:
+    Content-Type: application/json

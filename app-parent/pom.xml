@@ -15,8 +15,8 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>person-app</module>
         <module>order-app</module>
+        <module>person-app</module>
     </modules>
 
     <dependencies>

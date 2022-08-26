@@ -15,11 +15,44 @@
 
     <dependencies>
 
+        <!-- Test dependencies -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-contract-verifier</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-contract-stub-runner</artifactId>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
     <build>
 
         <plugins>
+
+            <plugin>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-contract-maven-plugin</artifactId>
+                <extensions>true</extensions>
+                <configuration>
+                    <testFramework>JUNIT5</testFramework>
+                    <baseClassMappings>
+                        <baseClassMapping>
+                            <contractPackageRegex>.*list-persons.*</contractPackageRegex>
+                            <baseClassFQN>com.vmware.tanzulabs.app.adapter.in.endpoint.ListPersonsBase</baseClassFQN>
+                        </baseClassMapping>
+                        <baseClassMapping>
+                            <contractPackageRegex>.*seed-persons.*</contractPackageRegex>
+                            <baseClassFQN>com.vmware.tanzulabs.app.adapter.in.endpoint.SeedPersonsBase</baseClassFQN>
+                        </baseClassMapping>
+                    </baseClassMappings>
+                    <outputDirectory>${maven.multiModuleProjectDirectory}/stubs</outputDirectory>
+                    <stubsDirectory>${maven.multiModuleProjectDirectory}/stubs</stubsDirectory>
+                </configuration>
+            </plugin>
 
             <plugin>
                 <groupId>org.springframework.boot</groupId>

@@ -1,0 +1,5 @@
+request:
+  method: POST
+  url: /seed
+response:
+  status: 202
