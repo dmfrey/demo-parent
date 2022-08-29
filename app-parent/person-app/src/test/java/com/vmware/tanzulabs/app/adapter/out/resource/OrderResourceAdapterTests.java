@@ -8,10 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.cloud.contract.stubrunner.junit.StubRunnerExtension;
 import org.springframework.cloud.contract.stubrunner.spring.StubRunnerProperties;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 import static com.vmware.tanzulabs.app.adapter.SpringCloudContractHelper.repoRoot;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -27,13 +24,19 @@ import static org.assertj.core.api.Assertions.assertThat;
 )
 public class OrderResourceAdapterTests {
 
+    static Map<String, String> contractProperties() {
+        Map<String, String> map = new HashMap<>();
+        map.put("stubs.find-producer", "true");
+        return map;
+    }
+
     @RegisterExtension
     static StubRunnerExtension stubRunnerExtension = new StubRunnerExtension()
             .downloadStub("com.vmware.tanzu-labs", "order-app" ).withPort( 8099 )
-            .withStubPerConsumer( true )
             .repoRoot( repoRoot() )
             .stubsMode( StubRunnerProperties.StubsMode.REMOTE )
-            .withMappingsOutputFolder( "target/outputmappings" );;
+            .withMappingsOutputFolder( "target/outputmappings" )
+            .withProperties( contractProperties() );
 
     @Autowired
     OrderResourceAdapter subject;
