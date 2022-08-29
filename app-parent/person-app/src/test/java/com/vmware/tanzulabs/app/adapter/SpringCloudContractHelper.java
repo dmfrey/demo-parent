@@ -12,7 +12,7 @@ public final class SpringCloudContractHelper {
             var projectModulePath = FileSystems.getDefault().getPath("" ).toAbsolutePath();
             var projectParentPath = projectModulePath.getParent().toAbsolutePath();
             var rootPath = projectParentPath.getParent().toAbsolutePath();
-            var stubsPath = Paths.get( rootPath.toString(), "/stubs" );
+            var stubsPath = Paths.get( rootPath.toString(), "/stubs/META-INF" );
 
             return "stubs://file://" + stubsPath;
 
