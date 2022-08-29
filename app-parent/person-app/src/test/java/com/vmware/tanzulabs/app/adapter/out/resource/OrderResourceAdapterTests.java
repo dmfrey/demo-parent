@@ -25,16 +25,17 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class OrderResourceAdapterTests {
 
     static Map<String, String> contractProperties() {
+
         Map<String, String> map = new HashMap<>();
-        map.put("stubs.find-producer", "true");
+        map.put( "stubs.find-producer", "true" );
+
         return map;
     }
 
     @RegisterExtension
     static StubRunnerExtension stubRunnerExtension = new StubRunnerExtension()
-            .downloadStub("com.vmware.tanzu-labs", "order-app", "0.0.1-SNAPSHOT" ).withPort( 8099 )
+            .downloadStub("com.vmware.tanzu-labs", "order-app" ).withPort( 8099 )
             .repoRoot( repoRoot() )
-            .withStubPerConsumer( true )
             .stubsMode( StubRunnerProperties.StubsMode.REMOTE )
             .withMappingsOutputFolder( "target/outputmappings" )
             .withProperties( contractProperties() );
