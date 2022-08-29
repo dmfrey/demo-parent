@@ -30,7 +30,7 @@ public class OrderResourceAdapterTests {
     @RegisterExtension
     static StubRunnerExtension stubRunnerExtension = new StubRunnerExtension()
             .downloadStub("com.vmware.tanzu-labs", "order-app" ).withPort( 8099 )
-            .withConsumerName( "order-app" )
+            .withStubPerConsumer( true )
             .repoRoot( repoRoot() )
             .stubsMode( StubRunnerProperties.StubsMode.REMOTE )
             .withMappingsOutputFolder( "target/outputmappings" );;
