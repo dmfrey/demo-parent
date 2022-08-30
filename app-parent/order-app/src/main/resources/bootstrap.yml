@@ -18,3 +18,7 @@ spring:
 
       config:
         name: order-app
+
+  zipkin:
+    enabled: true
+
