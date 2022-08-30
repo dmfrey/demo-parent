@@ -1,0 +1,16 @@
+{
+  "id" : "c1be0bd6-33c4-429d-80c3-63ac964d7a1a",
+  "request" : {
+    "urlPath" : "/orders/2",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "body" : "[]",
+    "headers" : {
+      "Content-Type" : "application/json"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "c1be0bd6-33c4-429d-80c3-63ac964d7a1a"
+}

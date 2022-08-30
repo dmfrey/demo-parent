@@ -1,0 +1,13 @@
+{
+  "id" : "be260e9f-d211-496a-81b0-d7e5eb5da770",
+  "request" : {
+    "urlPath" : "/persons",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "body" : "[{\"id\":\"f803c8fc-38ee-4949-8829-2c03d364d3ac\",\"firstName\":\"firstName\",\"lastName\":\"lastName\",\"customerId\":\"1\",\"orders\":[{\"id\":\"f803c8fc-38ee-4949-8829-2c03d364d3ac\",\"customerId\":1}]}]",
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "be260e9f-d211-496a-81b0-d7e5eb5da770"
+}

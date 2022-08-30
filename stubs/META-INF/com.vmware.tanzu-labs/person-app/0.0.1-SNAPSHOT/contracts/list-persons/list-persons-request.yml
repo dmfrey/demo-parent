@@ -1,0 +1,14 @@
+request:
+  method: GET
+  url: /persons
+response:
+  status: 200
+  body:
+    - id: 'f803c8fc-38ee-4949-8829-2c03d364d3ac'
+      firstName: 'firstName'
+      lastName: 'lastName'
+      customerId: '1'
+      orders:
+        - id: 'f803c8fc-38ee-4949-8829-2c03d364d3ac'
+          customerId: 1
+
