@@ -32,8 +32,8 @@
 	</properties>
 
 	<modules>
-		<module>app-parent</module>
 		<module>service-parent</module>
+		<module>app-parent</module>
 	</modules>
 
 	<dependencies>

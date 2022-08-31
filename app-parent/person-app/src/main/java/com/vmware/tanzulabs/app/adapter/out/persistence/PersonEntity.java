@@ -1,13 +1,16 @@
 package com.vmware.tanzulabs.app.adapter.out.persistence;
 
+import com.vmware.tanzulabs.app.Generated;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import java.util.Objects;
 import java.util.UUID;
 
 @Entity
 @Table( name = "person" )
+@Generated
 class PersonEntity {
 
     @Id
@@ -70,6 +73,23 @@ class PersonEntity {
 
         this.customerId = customerId;
 
+    }
+
+    @Override
+    public boolean equals( Object o ) {
+
+        if( this == o ) return true;
+        if( o == null || getClass() != o.getClass() ) return false;
+
+        PersonEntity that = (PersonEntity) o;
+
+        return id.equals( that.id ) && customerId.equals( that.customerId );
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash( id, customerId );
     }
 
     @Override

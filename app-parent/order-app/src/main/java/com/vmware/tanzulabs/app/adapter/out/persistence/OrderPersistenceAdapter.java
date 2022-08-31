@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.UUID;
 
 import static java.util.stream.Collectors.toList;
 
@@ -31,15 +32,13 @@ class OrderPersistenceAdapter implements FindOrdersByCustomerIdPort, SaveOrderPo
     @Transactional( readOnly = true )
     public List<Order> findByCustomerId( String customerId ) {
 
-//        customerId = customerId.replace( "@", "\\@" );
-
         return this.orderRepository.findByCustomerId( customerId ).stream()
                 .map( entity -> new Order( entity.getId(), entity.getCustomerId() ) )
                 .collect( toList() );
     }
 
     @Override
-    public void save( final Order order ) {
+    public UUID save( final Order order ) {
 
         var entity = new OrderEntity();
         entity.setCustomerId( order.customerId() );
@@ -47,6 +46,7 @@ class OrderPersistenceAdapter implements FindOrdersByCustomerIdPort, SaveOrderPo
         var saved = this.orderRepository.save( entity );
         log.debug( "save : orderEntity saved [{}]", saved );
 
+        return saved.getId();
     }
 
     @Override

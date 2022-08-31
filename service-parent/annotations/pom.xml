@@ -6,16 +6,30 @@
 
     <parent>
         <groupId>com.vmware.tanzu-labs</groupId>
-        <artifactId>demo-parent</artifactId>
+        <artifactId>service-parent</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>service-parent</artifactId>
-    <name>service-parent</name>
-    <packaging>pom</packaging>
+    <artifactId>annotations</artifactId>
+    <name>annotations</name>
+    <packaging>jar</packaging>
 
-    <modules>
-        <module>annotations</module>
-    </modules>
+    <properties>
+        <jacoco.skip>true</jacoco.skip>
+    </properties>
+
+    <dependencies>
+
+    </dependencies>
+
+    <build>
+
+        <plugins>
+
+        </plugins>
+
+    </build>
 
 </project>
+
+
