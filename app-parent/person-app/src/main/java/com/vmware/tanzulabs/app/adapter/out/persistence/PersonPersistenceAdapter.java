@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.StreamSupport;
 
 import static java.util.stream.Collectors.toList;
@@ -39,7 +40,7 @@ class PersonPersistenceAdapter implements FindAllPersonsPort, SavePersonPort, De
     }
 
     @Override
-    public void save( final Person person ) {
+    public UUID save( final Person person ) {
 
         var entity = new PersonEntity();
         entity.setFirstName( person.firstName() );
@@ -49,6 +50,7 @@ class PersonPersistenceAdapter implements FindAllPersonsPort, SavePersonPort, De
         var saved = this.personRepository.save( entity );
         log.debug( "save : saved person entity [{}]", saved );
 
+        return saved.getId();
     }
 
     @Override

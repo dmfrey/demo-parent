@@ -31,18 +31,12 @@ class OrderResourceAdapter implements LookupOrdersByCustomerIdPort {
     public Optional<List<Order>> lookup( String customerId ) {
 
         ResponseEntity<OrderResource[]> resourceResponseEntity = this.restTemplate.getForEntity( configurationProperties.orderResourceUrl() + "/orders/{customerId}", OrderResource[].class, customerId );
-        if( resourceResponseEntity.getStatusCode().is2xxSuccessful() ) {
 
-            List<Order> orders = Stream.of( Objects.requireNonNull(resourceResponseEntity.getBody() ) )
-                    .map( orderResource -> new Order( orderResource.orderId(), orderResource.customerId() ) )
-                    .toList();
+        List<Order> orders = Stream.of( Objects.requireNonNull(resourceResponseEntity.getBody() ) )
+                .map( orderResource -> new Order( orderResource.orderId(), orderResource.customerId() ) )
+                .toList();
 
-            return Optional.of( orders );
-
-        } else {
-
-            return Optional.empty();
-        }
+        return Optional.of( orders );
 
     }
 
