@@ -13,6 +13,10 @@
     <artifactId>order-app</artifactId>
     <name>order-app</name>
 
+    <properties>
+        <sonar.skip>true</sonar.skip>
+    </properties>
+
     <dependencies>
 
         <dependency>
