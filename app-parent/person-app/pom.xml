@@ -13,6 +13,14 @@
     <artifactId>person-app</artifactId>
     <name>person-app</name>
 
+    <properties>
+        <sonar.projectName>${project.artifactId}</sonar.projectName>
+        <sonar.coverage.jacoco.xmlReportPaths>${project.build.outputDirectory}/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
+        <sonar.dependencyCheck.reportPath>${project.build.outputDirectory}/dependency-check-report.xml</sonar.dependencyCheck.reportPath>
+        <sonar.dependencyCheck.htmlReportPath>${project.build.outputDirectory}/dependency-check-report.html</sonar.dependencyCheck.htmlReportPath>
+        <sonar.dependencyCheck.jsonReportPath>${project.build.outputDirectory}/dependency-check-report.json</sonar.dependencyCheck.jsonReportPath>
+    </properties>
+
     <dependencies>
 
         <!-- Test dependencies -->
