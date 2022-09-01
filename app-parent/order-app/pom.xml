@@ -13,10 +13,6 @@
     <artifactId>order-app</artifactId>
     <name>order-app</name>
 
-    <properties>
-        <sonar.skip>true</sonar.skip>
-    </properties>
-
     <dependencies>
 
         <dependency>
@@ -67,8 +63,12 @@
 
             <id>sonar-order-app</id>
 
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+
             <properties>
-                <sonar.skip>false</sonar.skip>
+                <sonar.skip>true</sonar.skip>
             </properties>
 
         </profile>

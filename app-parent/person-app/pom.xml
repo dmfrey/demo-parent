@@ -13,10 +13,6 @@
     <artifactId>person-app</artifactId>
     <name>person-app</name>
 
-    <properties>
-        <sonar.skip>true</sonar.skip>
-    </properties>
-
     <dependencies>
 
         <!-- Test dependencies -->
@@ -73,8 +69,12 @@
 
             <id>sonar-person-app</id>
 
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+
             <properties>
-                <sonar.skip>false</sonar.skip>
+                <sonar.skip>true</sonar.skip>
             </properties>
 
         </profile>
