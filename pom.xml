@@ -176,8 +176,7 @@
 				<sonar.host.url>https://sonarqube.km.spaceforce.mil</sonar.host.url>
 				<sonar.projectName>${project.artifactId}</sonar.projectName>
 				<sonar.login>${env.SONAR_TOKEN}</sonar.login>
-				<sonar.links.homepage>https://github.km.spaceforce.mil/atlas/atlas-kafka-health</sonar.links.homepage>
-				<sonar.coverage.jacoco.xmlReportPaths>./target/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
+				<sonar.coverage.jacoco.xmlReportPaths>target/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
 				<sonar.dependencyCheck.reportPath>target/dependency-check-report.xml</sonar.dependencyCheck.reportPath>
 				<sonar.dependencyCheck.htmlReportPath>target/dependency-check-report.html</sonar.dependencyCheck.htmlReportPath>
 				<sonar.dependencyCheck.jsonReportPath>target/dependency-check-report.json</sonar.dependencyCheck.jsonReportPath>
