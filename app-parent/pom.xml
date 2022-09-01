@@ -14,6 +14,10 @@
     <name>app-parent</name>
     <packaging>pom</packaging>
 
+    <properties>
+        <sonar.skip>true</sonar.skip>
+    </properties>
+
     <modules>
         <module>order-app</module>
         <module>person-app</module>

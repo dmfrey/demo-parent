@@ -61,6 +61,16 @@
 
         <profile>
 
+            <id>sonar-order-app</id>
+
+            <properties>
+                <sonar.skip>false</sonar.skip>
+            </properties>
+
+        </profile>
+
+        <profile>
+
             <id>jib</id>
 
             <build>
