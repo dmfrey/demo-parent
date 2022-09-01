@@ -106,6 +106,7 @@ jobs:
       harborRepo: "legos-test"
       gitopsRepo: "legos-test/person-app-gitops"
     secrets:
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       NEXUS_USERNAME: ${{ secrets.AD_USER }}
       NEXUS_PASSWORD: ${{ secrets.AD_PASS }}
       HARBOR_USERNAME: ${{ secrets.HARBOR_USER }}
