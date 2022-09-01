@@ -165,6 +165,45 @@
 
 	</build>
 
+	<profiles>
+
+		<profile>
+
+			<id>sonar</id>
+
+			<properties>
+				<sonar-maven-plugin.version>3.9.1.2184</sonar-maven-plugin.version>
+				<sonar.host.url>https://sonarqube.km.spaceforce.mil</sonar.host.url>
+				<sonar.projectName>${project.artifactId}</sonar.projectName>
+				<sonar.login>${env.SONAR_TOKEN}</sonar.login>
+				<sonar.links.homepage>https://github.km.spaceforce.mil/atlas/atlas-kafka-health</sonar.links.homepage>
+				<sonar.coverage.jacoco.xmlReportPaths>./target/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
+				<sonar.dependencyCheck.reportPath>target/dependency-check-report.xml</sonar.dependencyCheck.reportPath>
+				<sonar.dependencyCheck.htmlReportPath>target/dependency-check-report.html</sonar.dependencyCheck.htmlReportPath>
+				<sonar.dependencyCheck.jsonReportPath>target/dependency-check-report.json</sonar.dependencyCheck.jsonReportPath>
+<!--				<sonar.java.checkstyle.reportPaths>target/checkstyle-results.xml</sonar.java.checkstyle.reportPaths>-->
+			</properties>
+
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.sonarsource.scanner.maven</groupId>
+						<artifactId>sonar-maven-plugin</artifactId>
+						<version>${sonar-maven-plugin.version}</version>
+						<executions>
+							<execution>
+								<goals>
+									<goal>sonar</goal>
+								</goals>
+								<phase>verify</phase>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+	</profiles>
 	<repositories>
 
 		<repository>
