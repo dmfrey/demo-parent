@@ -1,5 +1,5 @@
 {
-  "id" : "4009c115-dc79-47c3-95d0-640b3a08d1e6",
+  "id" : "dd0354ac-98ea-49f5-ab04-5fe11ab052cc",
   "request" : {
     "urlPath" : "/persons",
     "method" : "GET"
@@ -9,5 +9,5 @@
     "body" : "[{\"id\":\"f803c8fc-38ee-4949-8829-2c03d364d3ac\",\"firstName\":\"firstName\",\"lastName\":\"lastName\",\"customerId\":\"1\",\"orders\":[{\"id\":\"f803c8fc-38ee-4949-8829-2c03d364d3ac\",\"customerId\":1}]}]",
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "4009c115-dc79-47c3-95d0-640b3a08d1e6"
+  "uuid" : "dd0354ac-98ea-49f5-ab04-5fe11ab052cc"
 }
