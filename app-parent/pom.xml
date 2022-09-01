@@ -171,25 +171,6 @@
                     </executions>
                 </plugin>
 
-                <plugin>
-                    <groupId>com.google.cloud.tools</groupId>
-                    <artifactId>jib-maven-plugin</artifactId>
-                    <version>3.2.1</version>
-                    <configuration>
-                        <from>
-                            <image>harbor.cp.az.km.spaceforce.mil/hardened/openjdk17:ubuntu-22.04-build</image>
-                        </from>
-                    </configuration>
-                    <executions>
-                        <execution>
-                            <phase>package</phase>
-                            <goals>
-                                <goal>build</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin>
-
             </plugins>
 
         </pluginManagement>
@@ -197,6 +178,43 @@
     </build>
 
     <profiles>
+
+        <profile>
+
+            <id>jib</id>
+
+            <build>
+
+                <pluginManagement>
+
+                    <plugins>
+
+                        <plugin>
+                            <groupId>com.google.cloud.tools</groupId>
+                            <artifactId>jib-maven-plugin</artifactId>
+                            <version>3.2.1</version>
+                            <configuration>
+                                <from>
+                                    <image>harbor.cp.az.km.spaceforce.mil/hardened/openjdk17:ubuntu-22.04-build</image>
+                                </from>
+                            </configuration>
+                            <executions>
+                                <execution>
+                                    <phase>package</phase>
+                                    <goals>
+                                        <goal>build</goal>
+                                    </goals>
+                                </execution>
+                            </executions>
+                        </plugin>
+
+                    </plugins>
+
+                </pluginManagement>
+
+            </build>
+
+        </profile>
 
         <profile>
 
