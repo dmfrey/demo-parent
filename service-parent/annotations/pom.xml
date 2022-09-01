@@ -16,7 +16,6 @@
 
     <properties>
         <jacoco.skip>true</jacoco.skip>
-        <sonar.skip>true</sonar.skip>
     </properties>
 
     <dependencies>
@@ -30,6 +29,24 @@
         </plugins>
 
     </build>
+
+    <profiles>
+
+        <profile>
+
+            <id>sonar-person-app</id>
+
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+
+            <properties>
+                <sonar.skip>true</sonar.skip>
+            </properties>
+
+        </profile>
+
+    </profiles>
 
 </project>
 

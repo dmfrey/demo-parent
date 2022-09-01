@@ -14,10 +14,6 @@
     <name>service-parent</name>
     <packaging>pom</packaging>
 
-    <properties>
-        <sonar.skip>true</sonar.skip>
-    </properties>
-
     <modules>
         <module>annotations</module>
     </modules>
