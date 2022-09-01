@@ -175,6 +175,7 @@
 				<sonar-maven-plugin.version>3.9.1.2184</sonar-maven-plugin.version>
 				<sonar.host.url>https://sonarqube.km.spaceforce.mil</sonar.host.url>
 				<sonar.projectName>${project.artifactId}</sonar.projectName>
+				<sonar.includeModules>app-parent,demo-parent</sonar.includeModules>
 				<sonar.login>${env.SONAR_TOKEN}</sonar.login>
 				<sonar.coverage.jacoco.xmlReportPaths>target/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
 				<sonar.dependencyCheck.reportPath>target/dependency-check-report.xml</sonar.dependencyCheck.reportPath>
