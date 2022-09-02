@@ -14,6 +14,7 @@
     <name>person-app</name>
 
     <properties>
+        <sonar.projectKey>${project.artifactId}</sonar.projectKey>
         <sonar.projectName>${project.artifactId}</sonar.projectName>
         <sonar.coverage.jacoco.xmlReportPaths>${project.build.outputDirectory}/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
         <sonar.dependencyCheck.reportPath>${project.build.outputDirectory}/dependency-check-report.xml</sonar.dependencyCheck.reportPath>
