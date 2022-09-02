@@ -30,7 +30,7 @@
 		<code-coverage.minimum>0.8</code-coverage.minimum>
 
 		<!-- CVE-2022-25857 -->
-		<snakeyaml.version>1.30</snakeyaml.version>
+		<snakeyaml.version>1.31</snakeyaml.version>
 
 	</properties>
 
