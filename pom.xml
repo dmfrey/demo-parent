@@ -91,6 +91,13 @@
 				<scope>test</scope>
 			</dependency>
 
+			<!-- CVE-2022-25857 -->
+			<dependency>
+				<groupId>org.yaml</groupId>
+				<artifactId>snakeyaml</artifactId>
+				<version>${snakeyaml.version}</version>
+			</dependency>
+
 		</dependencies>
 
 	</dependencyManagement>
