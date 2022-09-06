@@ -22,7 +22,7 @@ import static org.assertj.core.api.Assertions.assertThat;
                 "webservice.order-resource-url=http://localhost:8099"
         }
 )
-public class OrderResourceAdapterTests {
+class OrderResourceAdapterTests {
 
     static Map<String, String> contractProperties() {
 

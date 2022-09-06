@@ -23,7 +23,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @TestPropertySource( properties = {
         "spring.jpa.hibernate.ddl-auto=validate"
 })
-public class PersonPersistenceAdapterTests {
+class PersonPersistenceAdapterTests {
 
     @Autowired
     DataSource dataSource;

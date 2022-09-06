@@ -8,8 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static java.util.stream.Collectors.toList;
-
 @RestController
 class ListPersonEndpoint {
 
@@ -41,7 +39,7 @@ class ListPersonEndpoint {
 
                     return new PersonResponse( person.id(), person.firstName(), person.lastName(), person.customerId(), Optional.of( orders ) );
                 } )
-                .collect( toList() );
+                .toList();
     }
 
 }

@@ -14,8 +14,6 @@ import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.StreamSupport;
 
-import static java.util.stream.Collectors.toList;
-
 @Repository
 @Transactional
 class PersonPersistenceAdapter implements FindAllPersonsPort, SavePersonPort, DeleteAllPersonsPort {
@@ -36,7 +34,7 @@ class PersonPersistenceAdapter implements FindAllPersonsPort, SavePersonPort, De
 
         return StreamSupport.stream( this.personRepository.findAll().spliterator(), false )
                 .map( entity -> new Person( entity.getId(), entity.getFirstName(), entity.getLastName(), entity.getCustomerId(), Optional.empty() ) )
-                .collect( toList() );
+                .toList();
     }
 
     @Override

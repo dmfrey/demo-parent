@@ -10,8 +10,6 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 import java.util.Optional;
 
-import static java.util.stream.Collectors.toList;
-
 @Component
 class ListPersonService implements ListPersonUseCase {
 
@@ -38,7 +36,7 @@ class ListPersonService implements ListPersonUseCase {
 
                     return new Person( person.id(), person.firstName(), person.lastName(), person.customerId(), orders );
                 })
-                .collect( toList() );
+                .toList();
     }
 
 }
