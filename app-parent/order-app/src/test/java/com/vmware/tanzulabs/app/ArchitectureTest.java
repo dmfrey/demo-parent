@@ -11,17 +11,14 @@ import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.classes;
 import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.noClasses;
 import static com.tngtech.archunit.library.Architectures.onionArchitecture;
 
-public class ArchitectureTest {
+class ArchitectureTest {
 
     private static JavaClasses importedClasses;
 
     @BeforeAll
     static void setup() {
 
-        ImportOption ignoreTests = location -> {
-
-            return !location.contains( "/test/" );
-        };
+        ImportOption ignoreTests = location -> !location.contains( "/test/" );
 
 
         importedClasses =

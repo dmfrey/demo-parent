@@ -14,6 +14,7 @@ class SeedOrdersService implements SeedOrdersUseCase {
     private final SaveOrderPort saveOrderPort;
     private final DeleteAllOrdersPort deleteAllOrdersPort;
 
+    private static final List<String> customerIds = List.of( "dfrey@vmware.com", "gallen@vmware.com", "ftyler@vmware.com", "ibautista@vmware.com", "sshah@vmware.com" );
     SeedOrdersService(
             final SaveOrderPort saveOrderPort,
             final DeleteAllOrdersPort deleteAllOrdersPort
@@ -30,23 +31,23 @@ class SeedOrdersService implements SeedOrdersUseCase {
         this.deleteAllOrdersPort.deleteAll();
 
         List.of(
-                new Order( null, "dfrey@vmware.com" ),
-                new Order( null, "dfrey@vmware.com" ),
-                new Order( null, "dfrey@vmware.com" ),
-                new Order( null, "gallen@vmware.com" ),
-                new Order( null, "ftyler@vmware.com" ),
-                new Order( null, "ftyler@vmware.com" ),
-                new Order( null, "ftyler@vmware.com" ),
-                new Order( null, "ftyler@vmware.com" ),
-                new Order( null, "ftyler@vmware.com" ),
-                new Order( null, "ibautista@vmware.com" ),
-                new Order( null, "ibautista@vmware.com" ),
-                new Order( null, "sshah@vmware.com" ),
-                new Order( null, "sshah@vmware.com" ),
-                new Order( null, "sshah@vmware.com" ),
-                new Order( null, "sshah@vmware.com" ),
-                new Order( null, "sshah@vmware.com" ),
-                new Order( null, "sshah@vmware.com" )
+                new Order( null, customerIds.get( 0 ) ),
+                new Order( null, customerIds.get( 0 ) ),
+                new Order( null, customerIds.get( 0 ) ),
+                new Order( null, customerIds.get( 1 ) ),
+                new Order( null, customerIds.get( 2 ) ),
+                new Order( null, customerIds.get( 2 ) ),
+                new Order( null, customerIds.get( 2 ) ),
+                new Order( null, customerIds.get( 2 ) ),
+                new Order( null, customerIds.get( 2 ) ),
+                new Order( null, customerIds.get( 3 ) ),
+                new Order( null, customerIds.get( 3 ) ),
+                new Order( null, customerIds.get( 4 ) ),
+                new Order( null, customerIds.get( 4 ) ),
+                new Order( null, customerIds.get( 4 ) ),
+                new Order( null, customerIds.get( 4 ) ),
+                new Order( null, customerIds.get( 4 ) ),
+                new Order( null, customerIds.get( 4 ) )
         ).forEach( this.saveOrderPort::save );
 
     }

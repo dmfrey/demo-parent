@@ -12,8 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.UUID;
 
-import static java.util.stream.Collectors.toList;
-
 @Repository
 @Transactional
 class OrderPersistenceAdapter implements FindOrdersByCustomerIdPort, SaveOrderPort, DeleteAllOrdersPort {
@@ -34,7 +32,7 @@ class OrderPersistenceAdapter implements FindOrdersByCustomerIdPort, SaveOrderPo
 
         return this.orderRepository.findByCustomerId( customerId ).stream()
                 .map( entity -> new Order( entity.getId(), entity.getCustomerId() ) )
-                .collect( toList() );
+                .toList();
     }
 
     @Override

@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.mockito.Mockito.*;
 
-public class SeedOrdersServiceTests {
+class SeedOrdersServiceTests {
 
     SeedOrdersService subject;
 

@@ -7,8 +7,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-import static java.util.stream.Collectors.toList;
-
 @RestController
 class OrdersByCustomerIdEndpoint {
 
@@ -25,7 +23,7 @@ class OrdersByCustomerIdEndpoint {
 
         return this.useCase.execute( new OrdersByCustomerIdUseCase.OrdersByCustomerIdCommand( customerId ) ).stream()
                 .map( order -> new OrderResponse( order.orderId(), order.customerId() ) )
-                .collect( toList() );
+                .toList();
     }
 
 }
