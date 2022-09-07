@@ -186,8 +186,8 @@
 					<artifactId>spotbugs-maven-plugin</artifactId>
 					<configuration>
 						<effort>Max</effort>
-						<threshold>High</threshold>
-						<failOnError>true</failOnError>
+						<threshold>Low</threshold>
+						<failOnError>false</failOnError>
 						<plugins>
 							<plugin>
 								<groupId>com.h3xstream.findsecbugs</groupId>
