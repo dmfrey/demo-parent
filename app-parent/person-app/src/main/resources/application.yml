@@ -34,52 +34,26 @@ management:
 webservice:
   order-resource-url: http://localhost:8081
 
-#---
-#spring:
-#
-#  config:
-#    activate:
-#      on-profile: docker
-#
-#  zipkin:
-#    enabled: true
-#    base-url: http://tempo:9411
-#
-#webservice:
-#  order-resource-url: http://order-app:8080
-#
-#---
-#spring:
-#
-#  config:
-#    activate:
-#      on-profile: vault
-#
-#    import: vault://
-#
-#  cloud:
-#
-#    vault:
-#      enabled: true
-#      fail-fast: true
-#
-#      config:
-#        lifecycle:
-#          enabled: true
-#          min-renewal: 10m
-#          expiry-threshold: 10m
-#
-#      kv.enabled: false
-#
-#      uri: http://vault.vault.svc:8200
-#
-#      authentication: KUBERNETES
-#      kubernetes:
-#        role: person-app
-#        kubernetes-path: kubernetes
-#
-#      database:
-#        enabled: true
-#        role: person-app
-#        backend: database
 
+---
+spring:
+
+  config:
+    activate:
+      on-profile: kubernetes
+
+  datasource:
+    url: jdbc:postgresql://person-app-db:5432/person-app-db
+
+  zipkin:
+    enabled: true
+
+logging.level:
+  org.springframework.cloud.contract.stubrunner: INFO
+  org.springframework.cloud.kubernetes: INFO
+  org.springframework.data: INFO
+  org.springframework.web: INFO
+  com.vmware.tanzulabs.app: DEBUG
+
+webservice:
+  order-resource-url: http://order-app

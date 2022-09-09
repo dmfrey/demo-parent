@@ -23,12 +23,13 @@
 		<spring-cloud.version>2021.0.4</spring-cloud.version>
 		<spring-cloud-contract.version>3.1.4</spring-cloud-contract.version>
 
-		<postgresql.version>42.4.1</postgresql.version>
+		<postgresql.version>42.5.0</postgresql.version>
 
 		<jacoco-maven-plugin.version>0.8.8</jacoco-maven-plugin.version>
 		<code-coverage.skip>false</code-coverage.skip>
 		<code-coverage.minimum>0.8</code-coverage.minimum>
 		<pmd.version>3.19.0</pmd.version>
+		<spotbugs.version>4.7.2.0</spotbugs.version>
 
 		<!-- CVE-2022-25857 -->
 		<snakeyaml.version>1.31</snakeyaml.version>
@@ -176,6 +177,7 @@
 				<plugin>
 					<groupId>com.github.spotbugs</groupId>
 					<artifactId>spotbugs-maven-plugin</artifactId>
+					<version>${spotbugs.version}</version>
 					<configuration>
 						<effort>Max</effort>
 						<threshold>Low</threshold>
@@ -216,7 +218,6 @@
 			<id>sonar</id>
 
 			<properties>
-				<sonar-maven-plugin.version>3.9.1.2184</sonar-maven-plugin.version>
 				<sonar.host.url>https://sonarqube.km.spaceforce.mil</sonar.host.url>
 				<sonar.login>${env.SONAR_TOKEN}</sonar.login>
 			</properties>
@@ -226,7 +227,7 @@
 					<plugin>
 						<groupId>org.sonarsource.scanner.maven</groupId>
 						<artifactId>sonar-maven-plugin</artifactId>
-						<version>${sonar-maven-plugin.version}</version>
+						<version>3.9.1.2184</version>
 						<executions>
 							<execution>
 								<goals>

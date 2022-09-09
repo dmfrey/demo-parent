@@ -41,62 +41,23 @@ server:
   port: 8081
 
 
-#---
-#spring:
-#
-#  config:
-#    activate:
-#      on-profile: postgres
-#
-#  datasource:
-#    url: jdbc:postgresql://order-app-db:5432/postgres
-#
-#---
-#spring:
-#
-#  config:
-#    activate:
-#      on-profile: docker
-#
-#  zipkin:
-#    enabled: true
-#    base-url: http://monitoring-tempo-1:9411
-#
-#server:
-#  port: 8080
-#
-#---
-#spring:
-#
-#  config:
-#    activate:
-#      on-profile: vault
-#
-#    import: vault://
-#
-#  cloud:
-#
-#    vault:
-#      enabled: true
-#      fail-fast: true
-#
-#      config:
-#        lifecycle:
-#          enabled: true
-#          min-renewal: 10m
-#          expiry-threshold: 10m
-#
-#      kv.enabled: false
-#
-#      uri: http://vault.vault.svc:8200
-#
-#      authentication: KUBERNETES
-#      kubernetes:
-#        role: order-app
-#        kubernetes-path: kubernetes
-#
-#      database:
-#        enabled: true
-#        role: order-app
-#        backend: database
-#
+---
+spring:
+
+  config:
+    activate:
+      on-profile: kubernetes
+
+  datasource:
+    url: jdbc:postgresql://order-app-db:5432/order-app-db
+
+  zipkin:
+    enabled: true
+
+logging.level:
+  org.springframework.cloud.contract.stubrunner: INFO
+  org.springframework.cloud.kubernetes: INFO
+  org.springframework.data: INFO
+  org.springframework.web: INFO
+  com.vmware.tanzulabs.app: DEBUG
+
