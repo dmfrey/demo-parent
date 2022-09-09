@@ -70,12 +70,6 @@
             <scope>runtime</scope>
         </dependency>
 
-        <!-- Spring Cloud Stream dependencies -->
-        <!--		<dependency>-->
-        <!--			<groupId>org.springframework.cloud</groupId>-->
-        <!--			<artifactId>spring-cloud-starter-stream-rabbit</artifactId>-->
-        <!--		</dependency>-->
-
         <!-- Database dependencies -->
         <dependency>
             <groupId>org.liquibase</groupId>
