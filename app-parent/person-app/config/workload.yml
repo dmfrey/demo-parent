@@ -1,0 +1,32 @@
+---
+apiVersion: carto.run/v1alpha1
+kind: Workload
+metadata:
+  name: person-app
+  namespace: dfrey
+  labels:
+    apps.tanzu.vmware.com/workload-type: web
+    app.kubernetes.io/part-of: demo-parent
+spec:
+  build:
+    env:
+      - name: BP_JVM_VERSION
+        value: 17
+      - name: BP_MAVEN_BUILT_MODULE
+        value: app-parent/person-app
+      - name: BP_MAVEN_BUILD_ARGUMENTS
+        value: package -Dmaven.test.skip=true -pl :person-app
+  env:
+    - name: SPRING_PROFILES_ACTIVE
+      value: kubernetes
+  params:
+    - name: annotations
+      value:
+        autoscaling.knative.dev/minScale: "1"
+  source:
+    git:
+      url: https://github.com/dmfrey/demo-parent.git
+      ref:
+        branch: develop
+status:
+  supplyChainRef: {}
