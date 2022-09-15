@@ -19,6 +19,12 @@ spec:
   env:
     - name: SPRING_PROFILES_ACTIVE
       value: kubernetes
+  serviceClaims:
+    - name: person-app-db
+      ref:
+        apiVersion: sql.tanzu.vmware.com/v1
+        kind: Postgres
+        name: person-app-db
   params:
     - name: annotations
       value:
