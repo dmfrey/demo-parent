@@ -30,10 +30,8 @@ management:
       show-details: ALWAYS
       group:
         liveness:
-          additional-path: server:/livez
           show-details: always
         readiness:
-          additional-path: server:/readyz
           show-details: always
     restart:
       enabled: true

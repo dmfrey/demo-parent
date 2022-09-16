@@ -17,14 +17,16 @@ spec:
       - name: BP_MAVEN_BUILD_ARGUMENTS
         value: package -Dmaven.test.skip=true -pl :person-app
   env:
-    - name: SPRING_PROFILES_ACTIVE
-      value: kubernetes
+    - name: SPRING_ZIPKIN_ENABLED
+      value: false
+    - name: WEBSERVICE_ORDER_RESOURCE_URL
+      value: http://order-app.dfrey.svc.cluster.local
   serviceClaims:
-    - name: person-app-db
+    - name: db
       ref:
-        apiVersion: sql.tanzu.vmware.com/v1
-        kind: Postgres
-        name: person-app-db
+        apiVersion: services.apps.tanzu.vmware.com/v1alpha1
+        kind: ResourceClaim
+        name: postgres-dfrey
   params:
     - name: annotations
       value:
