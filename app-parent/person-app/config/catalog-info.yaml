@@ -1,0 +1,17 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: person-app
+  description: Person App
+  tags:
+    - java
+    - spring
+    - jpa
+    - sql
+    - tanzu
+  annotations:
+    'backstage.io/kubernetes-label-selector': 'app.kubernetes.io/part-of=demo-parent'
+spec:
+  type: service
+  lifecycle: experimental
+  owner: dfrey
