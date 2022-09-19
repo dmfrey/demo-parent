@@ -12,8 +12,8 @@ spec:
     env:
       - name: BP_JVM_VERSION
         value: 17
-      - name: BP_MAVEN_BUILT_MODULE
-        value: app-parent/order-app
+      - name: BP_MAVEN_BUILT_ARTIFACT
+        value: app-parent/order-app/target/order-app-0.0.1-SNAPSHOT.jar
       - name: BP_MAVEN_BUILD_ARGUMENTS
         value: package -Dmaven.test.skip=true -pl :order-app
   env:

@@ -4,13 +4,6 @@
 
 	<modelVersion>4.0.0</modelVersion>
 
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.7.3</version>
-		<relativePath/> <!-- lookup parent from repository -->
-	</parent>
-
 	<groupId>com.vmware.tanzu-labs</groupId>
 	<artifactId>demo-parent</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
@@ -20,6 +13,9 @@
 
 	<properties>
 		<java.version>17</java.version>
+		<maven.compiler.source>${java.version}</maven.compiler.source>
+		<maven.compiler.target>${java.version}</maven.compiler.target>
+		<spring-boot.version>2.7.3</spring-boot.version>
 		<spring-cloud.version>2021.0.4</spring-cloud.version>
 		<spring-cloud-contract.version>3.1.4</spring-cloud-contract.version>
 
@@ -64,6 +60,14 @@
 		<dependencies>
 
 			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<version>${spring-boot.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
+			<dependency>
 				<groupId>org.springframework.cloud</groupId>
 				<artifactId>spring-cloud-dependencies</artifactId>
 				<version>${spring-cloud.version}</version>
@@ -101,6 +105,12 @@
 		<pluginManagement>
 
 			<plugins>
+
+				<plugin>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-maven-plugin</artifactId>
+					<version>${spring-boot.version}</version>
+				</plugin>
 
 				<plugin>
 					<groupId>org.springframework.cloud</groupId>
@@ -218,7 +228,6 @@
 			<id>sonar</id>
 
 			<properties>
-				<sonar.host.url>https://sonarqube.km.spaceforce.mil</sonar.host.url>
 				<sonar.login>${env.SONAR_TOKEN}</sonar.login>
 			</properties>
 

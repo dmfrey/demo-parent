@@ -12,8 +12,8 @@ spec:
     env:
       - name: BP_JVM_VERSION
         value: 17
-      - name: BP_MAVEN_BUILT_MODULE
-        value: app-parent/person-app
+      - name: BP_MAVEN_BUILT_ARTIFACT
+        value: app-parent/person-app/target/person-app-0.0.1-SNAPSHOT.jar
       - name: BP_MAVEN_BUILD_ARGUMENTS
         value: package -Dmaven.test.skip=true -pl :person-app
   env:
@@ -26,7 +26,7 @@ spec:
       ref:
         apiVersion: services.apps.tanzu.vmware.com/v1alpha1
         kind: ResourceClaim
-        name: postgres-dfrey
+        name: postgres-dfrey2
   params:
     - name: annotations
       value:
