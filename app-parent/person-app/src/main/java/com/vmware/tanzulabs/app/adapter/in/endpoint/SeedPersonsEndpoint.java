@@ -3,6 +3,7 @@ package com.vmware.tanzulabs.app.adapter.in.endpoint;
 import com.vmware.tanzulabs.app.application.in.SeedPersonsUseCase;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.info.Info;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,6 +29,7 @@ class SeedPersonsEndpoint {
 
     @PostMapping( "/seed" )
     @ResponseStatus( ACCEPTED )
+    @CrossOrigin
     void seed() {
 
         this.seedPersonsUseCase.execute();
