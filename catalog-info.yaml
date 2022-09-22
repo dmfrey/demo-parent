@@ -85,7 +85,7 @@ spec:
       title: Persons Endpoint
       description: Lists all persons
     servers:
-      - url: http://person-app.dfrey.tap.h2o-2-1249.h2o.vmware.com
+      - url: https://person-app-dfrey.tap.h2o-2-1249.h2o.vmware.com/
         description: Generated server url
     paths:
       /seed:
@@ -154,7 +154,7 @@ spec:
       title: Orders Endpoint
       description: Gets all orders for a customer
     servers:
-      - url: http://order-app.dfrey.tap.h2o-2-1249.h2o.vmware.com
+      - url: https://order-app-dfrey.tap.h2o-2-1249.h2o.vmware.com/
         description: Generated server url
     paths:
       /seed:
