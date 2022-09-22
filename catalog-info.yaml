@@ -1,0 +1,197 @@
+---
+apiVersion: backstage.io/v1alpha1
+kind: Domain
+metadata:
+  name: demo-parent-domain
+  description: Demo Parent Domain for Tanzu Application Platform
+  annotations:
+    'backstage.io/techdocs-ref': dir:.
+spec:
+  owner: dfrey
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: demo-parent
+  description: Demo Parent Applications for Tanzu Application Platform
+  annotations:
+    'backstage.io/techdocs-ref': dir:.
+spec:
+  owner: dfrey
+  domain: demo-parent-domain
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: person-app
+  description: Person App
+  tags:
+    - java
+    - spring
+    - jpa
+    - sql
+    - tanzu
+  annotations:
+    'backstage.io/kubernetes-label-selector': 'app.kubernetes.io/part-of=demo-parent'
+    'backstage.io/techdocs-ref': dir:.
+spec:
+  type: service
+  providesApis:
+    - person-app-api
+  consumesApis:
+    - order-app-api
+  lifecycle: experimental
+  owner: dfrey
+  system: demo-parent
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: order-app
+  description: Order App
+  tags:
+    - java
+    - spring
+    - jpa
+    - sql
+    - tanzu
+  annotations:
+    'backstage.io/kubernetes-label-selector': 'app.kubernetes.io/part-of=demo-parent'
+spec:
+  type: service
+  providesApis:
+    - order-app-api
+  lifecycle: experimental
+  owner: dfrey
+  system: demo-parent
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: person-app-api
+  description: Person App API
+spec:
+  type: openapi
+  lifecycle: experimental
+  owner: dfrey
+  system: demo-parent
+  definition: |
+    openapi: 3.0.1
+    info:
+      title: Persons Endpoint
+      description: Lists all persons
+    servers:
+      - url: http://person-app.dfrey.tap.h2o-2-1249.h2o.vmware.com
+        description: Generated server url
+    paths:
+      /seed:
+        post:
+          tags:
+            - seed-persons-endpoint
+          operationId: seed
+          responses:
+            "202":
+              description: Accepted
+      /persons:
+        get:
+          tags:
+            - list-person-endpoint
+          operationId: listPersons
+          responses:
+            "200":
+              description: OK
+              content:
+                '*/*':
+                  schema:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/PersonResponse'
+    components:
+      schemas:
+        OrderResponse:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+            customerId:
+              type: string
+        PersonResponse:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+            firstName:
+              type: string
+            lastName:
+              type: string
+            customerId:
+              type: string
+            orders:
+              type: array
+              items:
+                $ref: '#/components/schemas/OrderResponse'
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: orders-app-api
+  description: Orders App API
+spec:
+  type: openapi
+  lifecycle: experimental
+  owner: dfrey
+  system: demo-parent
+  definition: |
+    openapi: 3.0.1
+    info:
+      title: Orders Endpoint
+      description: Gets all orders for a customer
+    servers:
+      - url: http://order-app.dfrey.tap.h2o-2-1249.h2o.vmware.com
+        description: Generated server url
+    paths:
+      /seed:
+        post:
+          tags:
+            - seed-orders-endpoint
+          operationId: seed
+          responses:
+            "202":
+              description: Accepted
+      /orders/{customerId}:
+        get:
+          tags:
+            - orders-by-customer-id-endpoint
+          operationId: ordersByCustomerId
+          parameters:
+            - name: customerId
+              in: path
+              required: true
+              schema:
+                type: string
+          responses:
+            "200":
+              description: OK
+              content:
+                '*/*':
+                  schema:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/OrderResponse'
+    components:
+      schemas:
+        OrderResponse:
+          type: object
+          properties:
+            orderId:
+              type: string
+              format: uuid
+            customerId:
+              type: string
