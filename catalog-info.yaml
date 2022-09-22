@@ -23,6 +23,17 @@ spec:
 
 ---
 apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: person-app-db
+  description: Stores person details
+spec:
+  type: database
+  owner: dfrey
+  system: demo-parent
+
+---
+apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: person-app
@@ -43,6 +54,17 @@ spec:
   consumesApis:
     - order-app-api
   lifecycle: experimental
+  owner: dfrey
+  system: demo-parent
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: order-app-db
+  description: Stores order details
+spec:
+  type: database
   owner: dfrey
   system: demo-parent
 
