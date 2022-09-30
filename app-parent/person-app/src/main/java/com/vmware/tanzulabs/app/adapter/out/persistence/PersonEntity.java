@@ -1,6 +1,6 @@
 package com.vmware.tanzulabs.app.adapter.out.persistence;
 
-import com.vmware.tanzulabs.app.Generated;
+import com.vmware.tanzulabs.app.annotations.Generated;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;

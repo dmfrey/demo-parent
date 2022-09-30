@@ -1,5 +1,6 @@
 package com.vmware.tanzulabs.app.application;
 
+import com.vmware.tanzulabs.app.annotations.usecase.UseCase;
 import com.vmware.tanzulabs.app.application.in.ListPersonUseCase;
 import com.vmware.tanzulabs.app.application.out.FindAllPersonsPort;
 import com.vmware.tanzulabs.app.application.out.LookupOrdersByCustomerIdPort;
@@ -10,7 +11,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 import java.util.Optional;
 
-@Component
+@UseCase
 class ListPersonService implements ListPersonUseCase {
 
     private final FindAllPersonsPort findAllPersonsPort;

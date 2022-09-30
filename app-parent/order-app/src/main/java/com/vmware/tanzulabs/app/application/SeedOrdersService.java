@@ -1,5 +1,6 @@
 package com.vmware.tanzulabs.app.application;
 
+import com.vmware.tanzulabs.app.annotations.usecase.UseCase;
 import com.vmware.tanzulabs.app.application.in.SeedOrdersUseCase;
 import com.vmware.tanzulabs.app.application.out.DeleteAllOrdersPort;
 import com.vmware.tanzulabs.app.application.out.SaveOrderPort;
@@ -8,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@Component
+@UseCase
 class SeedOrdersService implements SeedOrdersUseCase {
 
     private final SaveOrderPort saveOrderPort;

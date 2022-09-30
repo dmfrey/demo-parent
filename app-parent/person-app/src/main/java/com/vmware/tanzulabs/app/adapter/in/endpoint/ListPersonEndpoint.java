@@ -1,5 +1,6 @@
 package com.vmware.tanzulabs.app.adapter.in.endpoint;
 
+import com.vmware.tanzulabs.app.annotations.endpoint.EndpointAdapter;
 import com.vmware.tanzulabs.app.application.in.ListPersonUseCase;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.info.Info;
@@ -11,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@RestController
+@EndpointAdapter
 @OpenAPIDefinition(
         info = @Info(
                 title = "Persons Endpoint",

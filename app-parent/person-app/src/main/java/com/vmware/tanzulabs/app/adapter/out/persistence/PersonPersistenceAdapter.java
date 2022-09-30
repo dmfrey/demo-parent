@@ -1,5 +1,6 @@
 package com.vmware.tanzulabs.app.adapter.out.persistence;
 
+import com.vmware.tanzulabs.app.annotations.persistence.PersistenceAdapter;
 import com.vmware.tanzulabs.app.application.out.DeleteAllPersonsPort;
 import com.vmware.tanzulabs.app.application.out.FindAllPersonsPort;
 import com.vmware.tanzulabs.app.application.out.SavePersonPort;
@@ -14,7 +15,7 @@ import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.StreamSupport;
 
-@Repository
+@PersistenceAdapter
 @Transactional
 class PersonPersistenceAdapter implements FindAllPersonsPort, SavePersonPort, DeleteAllPersonsPort {
 

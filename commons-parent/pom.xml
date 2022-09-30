@@ -10,12 +10,13 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>service-parent</artifactId>
-    <name>service-parent</name>
+    <artifactId>commons-parent</artifactId>
+    <name>commons-parent</name>
     <packaging>pom</packaging>
 
     <modules>
-        <module>annotations</module>
+        <module>commons-annotations</module>
+        <module>commons-dependencies</module>
     </modules>
 
 </project>
