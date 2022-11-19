@@ -1,5 +1,6 @@
 package com.vmware.tanzulabs.app.application;
 
+import com.vmware.tanzulabs.app.annotations.usecase.UseCase;
 import com.vmware.tanzulabs.app.application.in.SeedPersonsUseCase;
 import com.vmware.tanzulabs.app.application.out.DeleteAllPersonsPort;
 import com.vmware.tanzulabs.app.application.out.SavePersonPort;
@@ -9,7 +10,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 import java.util.Optional;
 
-@Component
+@UseCase
 class SeedPersonsService implements SeedPersonsUseCase {
 
     private final SavePersonPort savePersonPort;

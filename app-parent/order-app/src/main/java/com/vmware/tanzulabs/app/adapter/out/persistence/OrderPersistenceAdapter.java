@@ -1,5 +1,6 @@
 package com.vmware.tanzulabs.app.adapter.out.persistence;
 
+import com.vmware.tanzulabs.app.annotations.persistence.PersistenceAdapter;
 import com.vmware.tanzulabs.app.application.out.DeleteAllOrdersPort;
 import com.vmware.tanzulabs.app.application.out.FindOrdersByCustomerIdPort;
 import com.vmware.tanzulabs.app.application.out.SaveOrderPort;
@@ -12,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.UUID;
 
-@Repository
+@PersistenceAdapter
 @Transactional
 class OrderPersistenceAdapter implements FindOrdersByCustomerIdPort, SaveOrderPort, DeleteAllOrdersPort {
 

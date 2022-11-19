@@ -28,6 +28,11 @@ management:
   endpoint:
     health:
       show-details: ALWAYS
+      group:
+        liveness:
+          show-details: always
+        readiness:
+          show-details: always
     restart:
       enabled: true
 

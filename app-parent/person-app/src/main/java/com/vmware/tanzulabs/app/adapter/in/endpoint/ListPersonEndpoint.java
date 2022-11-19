@@ -1,6 +1,10 @@
 package com.vmware.tanzulabs.app.adapter.in.endpoint;
 
+import com.vmware.tanzulabs.app.annotations.endpoint.EndpointAdapter;
 import com.vmware.tanzulabs.app.application.in.ListPersonUseCase;
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.info.Info;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -8,7 +12,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@RestController
+@EndpointAdapter
+@OpenAPIDefinition(
+        info = @Info(
+                title = "Persons Endpoint",
+                description = "Lists all persons"
+        )
+)
 class ListPersonEndpoint {
 
     private final ListPersonUseCase listPersonUseCase;
@@ -20,6 +30,7 @@ class ListPersonEndpoint {
     }
 
     @GetMapping( "/persons" )
+    @CrossOrigin
     List<PersonResponse> listPersons() {
 
         return this.listPersonUseCase.execute().stream()
