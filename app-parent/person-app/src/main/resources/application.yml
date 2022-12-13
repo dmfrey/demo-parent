@@ -1,11 +1,11 @@
 debug: false
 
-logging.level:
-  org.springframework.cloud.contract.stubrunner: DEBUG
-  org.springframework.cloud.kubernetes: DEBUG
-  org.springframework.data: DEBUG
-  org.springframework.web: DEBUG
-  com.vmware.tanzulabs.app: DEBUG
+logging:
+  level:
+    org.springframework.cloud.kubernetes: DEBUG
+    org.springframework.data: DEBUG
+    org.springframework.web: DEBUG
+    com.vmware.tanzulabs.app: DEBUG
 
 spring:
 
@@ -38,6 +38,20 @@ management:
 
 webservice:
   order-resource-url: http://localhost:8081
+
+---
+spring:
+
+  config:
+    activate:
+      on-profile: docker
+
+  zipkin:
+    enabled: true
+
+logging:
+  file:
+    name: ${spring.application.name}.log
 
 
 ---
