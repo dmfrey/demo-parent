@@ -12,7 +12,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: person-app
+  IMAGE_NAME: person-app:0.0.1-SNAPSHOT
 
 jobs:
 
@@ -46,7 +46,8 @@ jobs:
           ./mvnw -B \
           -pl :person-app \
           --no-transfer-progress \
-          clean install spring-boot:build-image
+          clean install spring-boot:build-image \
+          -Dimage=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
 
       - name: Extract metadata (tags, labels) for Docker
         id: meta

@@ -12,7 +12,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: order-app
+  IMAGE_NAME: order-app:0.0.1-SNAPSHOT
 
 jobs:
 
@@ -47,7 +47,8 @@ jobs:
           ./mvnw -B \
           -pl :order-app \
           --no-transfer-progress \
-          clean install spring-boot:build-image
+          clean install spring-boot:build-image \
+          -Dimage=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
 
       - name: Extract metadata (tags, labels) for Docker
         id: meta
