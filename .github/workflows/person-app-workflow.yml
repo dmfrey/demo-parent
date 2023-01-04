@@ -24,4 +24,7 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
       - run: |
-          ./mvnw -pl :person-app clean install
+          ./mvnw -B \
+          -pl :person-app \
+          --no-transfer-progress \
+          clean install
