@@ -10,6 +10,10 @@ on:
       - 'app-parent/pom.xml'
       - 'app-parent/order-app/**'
 
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: order-app
+
 jobs:
 
   build-and-test:
