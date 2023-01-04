@@ -12,7 +12,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: person-app:0.0.1-SNAPSHOT
+  IMAGE_NAME: person-app
 
 jobs:
 
@@ -47,7 +47,7 @@ jobs:
           -pl :person-app \
           --no-transfer-progress \
           clean install spring-boot:build-image \
-          -Dimage=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          -Dimage=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:develop
 
       - name: Extract metadata (tags, labels) for Docker
         id: meta
