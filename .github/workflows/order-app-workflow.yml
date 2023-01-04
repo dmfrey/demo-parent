@@ -27,5 +27,5 @@ jobs:
           ./mvnw -B \
           -pl :order-app \
           --no-transfer-progress \
-          clean install
+          clean install spring-boot:build-image
 

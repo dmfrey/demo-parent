@@ -27,4 +27,4 @@ jobs:
           ./mvnw -B \
           -pl :person-app \
           --no-transfer-progress \
-          clean install
+          clean install spring-boot:build-image
