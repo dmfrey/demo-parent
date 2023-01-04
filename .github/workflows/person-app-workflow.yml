@@ -1,4 +1,4 @@
-name: order-app-workflow
+name: person-app-workflow
 
 on:
   push:
