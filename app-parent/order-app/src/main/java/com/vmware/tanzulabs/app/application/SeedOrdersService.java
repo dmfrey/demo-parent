@@ -5,7 +5,6 @@ import com.vmware.tanzulabs.app.application.in.SeedOrdersUseCase;
 import com.vmware.tanzulabs.app.application.out.DeleteAllOrdersPort;
 import com.vmware.tanzulabs.app.application.out.SaveOrderPort;
 import com.vmware.tanzulabs.app.domain.Order;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 

@@ -5,7 +5,6 @@ import com.vmware.tanzulabs.app.application.in.SeedPersonsUseCase;
 import com.vmware.tanzulabs.app.application.out.DeleteAllPersonsPort;
 import com.vmware.tanzulabs.app.application.out.SavePersonPort;
 import com.vmware.tanzulabs.app.domain.Person;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;

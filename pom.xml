@@ -17,21 +17,16 @@
 		<maven.compiler.source>${java.version}</maven.compiler.source>
 		<maven.compiler.target>${java.version}</maven.compiler.target>
 
-		<spring-boot.version>2.7.4</spring-boot.version>
-		<spring-cloud.version>2021.0.4</spring-cloud.version>
-		<spring-cloud-contract.version>3.1.4</spring-cloud-contract.version>
+		<spring-boot.version>3.0.1</spring-boot.version>
+		<spring-cloud.version>2022.0.0</spring-cloud.version>
+		<spring-cloud-contract.version>4.0.0</spring-cloud-contract.version>
 		<springdoc.version>1.6.11</springdoc.version>
-
-		<postgresql.version>42.5.0</postgresql.version>
 
 		<jacoco-maven-plugin.version>0.8.8</jacoco-maven-plugin.version>
 		<code-coverage.skip>false</code-coverage.skip>
 		<code-coverage.minimum>0.8</code-coverage.minimum>
 		<pmd.version>3.19.0</pmd.version>
 		<spotbugs.version>4.7.2.0</spotbugs.version>
-
-		<!-- CVE-2022-25857 -->
-		<snakeyaml.version>1.31</snakeyaml.version>
 
 	</properties>
 
@@ -90,13 +85,6 @@
 				<artifactId>spring-cloud-starter-contract-stub-runner</artifactId>
 				<version>${spring-cloud-contract.version}</version>
 				<scope>test</scope>
-			</dependency>
-
-			<!-- CVE-2022-25857 -->
-			<dependency>
-				<groupId>org.yaml</groupId>
-				<artifactId>snakeyaml</artifactId>
-				<version>${snakeyaml.version}</version>
 			</dependency>
 
 		</dependencies>

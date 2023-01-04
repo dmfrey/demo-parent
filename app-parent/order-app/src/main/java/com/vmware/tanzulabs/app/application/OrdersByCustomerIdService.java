@@ -4,7 +4,6 @@ import com.vmware.tanzulabs.app.annotations.usecase.UseCase;
 import com.vmware.tanzulabs.app.application.in.OrdersByCustomerIdUseCase;
 import com.vmware.tanzulabs.app.application.out.FindOrdersByCustomerIdPort;
 import com.vmware.tanzulabs.app.domain.Order;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 

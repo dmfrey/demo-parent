@@ -3,8 +3,8 @@ package com.vmware.tanzulabs.app.adapter.out.persistence;
 import com.vmware.tanzulabs.app.annotations.Generated;
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 import java.util.Objects;
 import java.util.UUID;
 

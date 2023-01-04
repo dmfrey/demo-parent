@@ -27,26 +27,26 @@
 
         <plugins>
 
-            <plugin>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-contract-maven-plugin</artifactId>
-                <extensions>true</extensions>
-                <configuration>
-                    <testFramework>JUNIT5</testFramework>
-                    <baseClassMappings>
-                        <baseClassMapping>
-                            <contractPackageRegex>.*orders-by-customer-id.*</contractPackageRegex>
-                            <baseClassFQN>com.vmware.tanzulabs.app.adapter.in.endpoint.OrdersByCustomerIdBase</baseClassFQN>
-                        </baseClassMapping>
-                        <baseClassMapping>
-                            <contractPackageRegex>.*seed-orders.*</contractPackageRegex>
-                            <baseClassFQN>com.vmware.tanzulabs.app.adapter.in.endpoint.SeedOrdersBase</baseClassFQN>
-                        </baseClassMapping>
-                    </baseClassMappings>
-                    <outputDirectory>${maven.multiModuleProjectDirectory}/stubs</outputDirectory>
-                    <stubsDirectory>${maven.multiModuleProjectDirectory}/stubs</stubsDirectory>
-                </configuration>
-            </plugin>
+<!--            <plugin>-->
+<!--                <groupId>org.springframework.cloud</groupId>-->
+<!--                <artifactId>spring-cloud-contract-maven-plugin</artifactId>-->
+<!--                <extensions>true</extensions>-->
+<!--                <configuration>-->
+<!--                    <testFramework>JUNIT5</testFramework>-->
+<!--                    <baseClassMappings>-->
+<!--                        <baseClassMapping>-->
+<!--                            <contractPackageRegex>.*orders-by-customer-id.*</contractPackageRegex>-->
+<!--                            <baseClassFQN>com.vmware.tanzulabs.app.adapter.in.endpoint.OrdersByCustomerIdBase</baseClassFQN>-->
+<!--                        </baseClassMapping>-->
+<!--                        <baseClassMapping>-->
+<!--                            <contractPackageRegex>.*seed-orders.*</contractPackageRegex>-->
+<!--                            <baseClassFQN>com.vmware.tanzulabs.app.adapter.in.endpoint.SeedOrdersBase</baseClassFQN>-->
+<!--                        </baseClassMapping>-->
+<!--                    </baseClassMappings>-->
+<!--                    <outputDirectory>${maven.multiModuleProjectDirectory}/stubs</outputDirectory>-->
+<!--                    <stubsDirectory>${maven.multiModuleProjectDirectory}/stubs</stubsDirectory>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
 
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -70,25 +70,6 @@
             <properties>
                 <sonar.skip>true</sonar.skip>
             </properties>
-
-        </profile>
-
-        <profile>
-
-            <id>jib</id>
-
-            <build>
-
-                <plugins>
-
-                    <plugin>
-                        <groupId>com.google.cloud.tools</groupId>
-                        <artifactId>jib-maven-plugin</artifactId>
-                    </plugin>
-
-                </plugins>
-
-            </build>
 
         </profile>
 

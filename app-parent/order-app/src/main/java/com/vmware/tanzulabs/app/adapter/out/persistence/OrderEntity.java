@@ -1,10 +1,14 @@
 package com.vmware.tanzulabs.app.adapter.out.persistence;
 
 import com.vmware.tanzulabs.app.annotations.Generated;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotEmpty;
 import java.util.Objects;
 import java.util.UUID;
 
