@@ -10,6 +10,9 @@ on:
       - 'commons-parent/pom.xml'
       - 'commons-parent/commons-annotations/**'
 
+env:
+  REGISTRY: ghcr.io
+
 jobs:
 
   build-and-test:
