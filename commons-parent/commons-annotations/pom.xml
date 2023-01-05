@@ -12,6 +12,7 @@
 
     <artifactId>commons-annotations</artifactId>
     <name>commons-annotations</name>
+    <version>1.0.0</version>
     <packaging>jar</packaging>
 
     <properties>
