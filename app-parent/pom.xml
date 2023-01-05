@@ -14,6 +14,10 @@
     <name>app-parent</name>
     <packaging>pom</packaging>
 
+    <properties>
+        <commons-dependencies.version>1.0.0</commons-dependencies.version>
+    </properties>
+
     <modules>
         <module>order-app</module>
         <module>person-app</module>
@@ -110,7 +114,7 @@
             <dependency>
                 <groupId>com.vmware.tanzu-labs</groupId>
                 <artifactId>commons-dependencies</artifactId>
-                <version>${project.version}</version>
+                <version>${commons-dependencies.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>

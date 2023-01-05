@@ -13,6 +13,7 @@
     <artifactId>commons-dependencies</artifactId>
     <name>commons-dependencies</name>
     <version>1.0.0</version>
+    <packaging>pom</packaging>
 
     <properties>
         <commons-annotations.version>1.0.0</commons-annotations.version>
