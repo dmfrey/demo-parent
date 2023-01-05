@@ -45,11 +45,12 @@ jobs:
 
       - name: Build, test and create the image
         run: |
+          VERSION=$(./mvnw help:evaluate -Dexpression=project.groupId -q -DforceStdout) \
           ./mvnw -B -s settings.xml \
           -pl :person-app \
           --no-transfer-progress \
-          clean install spring-boot:build-image \
-          -Dimage=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:develop
+          clean install deploy spring-boot:build-image \
+          -DimageName=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:$VERSION
 
       - name: Extract metadata (tags, labels) for Docker
         id: meta
