@@ -6,7 +6,7 @@ on:
       - develop
       - release_commons_annotations/**
     paths:
-      - '.github/workflows/common-annotations-workflow.yml'
+      - '.github/workflows/commons-annotations-workflow.yml'
       - 'pom.xml'
       - 'commons-parent/pom.xml'
       - 'commons-parent/commons-annotations/**'

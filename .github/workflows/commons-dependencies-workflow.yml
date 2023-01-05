@@ -1,0 +1,42 @@
+name: commons-dependencies-workflow
+
+on:
+  push:
+    branches:
+      - develop
+      - release_commons_dependencies/**
+    paths:
+      - '.github/workflows/commons-dependencies-workflow.yml'
+      - 'pom.xml'
+      - 'commons-parent/pom.xml'
+      - 'commons-parent/commons-dependencies/**'
+
+jobs:
+
+  build-and-test:
+    name: Build and Test source, Publish artifact
+
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+
+      - name: Checkout the source code
+        uses: actions/checkout@v3
+
+      - name: Setup JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Build, test and create the artifact
+        run: |
+          ./mvnw -B \
+          -pl :commons-dependencies \
+          --no-transfer-progress \
+          clean install deploy
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
