@@ -1,0 +1,39 @@
+name: person-app-workflow
+
+on:
+  push:
+    branches:
+      - develop
+    paths:
+      - '.github/workflows/common-annotations-workflow.yml'
+      - 'pom.xml'
+      - 'commons-parent/pom.xml'
+      - 'commons-parent/commons-annotations/**'
+
+jobs:
+
+  build-and-test:
+    name: Build and Test source, Publish artifact
+
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+
+      - name: Checkout the source code
+        uses: actions/checkout@v3
+
+      - name: Setup JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Build, test and create the image
+        run: |
+          ./mvnw -B \
+          -pl :commons-annotations \
+          --no-transfer-progress \
+          clean install deploy
