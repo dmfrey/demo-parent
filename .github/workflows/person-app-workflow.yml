@@ -45,7 +45,7 @@ jobs:
 
       - name: Get app version
         run: |
-          echo "app_version=$(./mvnw -s settings.xml -pl :person-app help:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_ENV
+          echo "app_version=$(./mvnw -s settings.xml -pl :person-app help:evaluate -Dexpression=project.version -q -DforceStdout)-$(git rev-parse --short HEAD)" >> $GITHUB_ENV
 
       - name: Build, test and create the image
         run: |
@@ -53,25 +53,5 @@ jobs:
           -pl :person-app \
           --no-transfer-progress \
           clean install deploy spring-boot:build-image \
-          -Dspring-boot.build-image.imageName=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.ref_name }}
-
-      - name: Extract metadata (tags, labels) for Docker
-        id: meta
-        uses: docker/metadata-action@v4.1.1
-        with:
-          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-          tags: |
-            type=ref,event=branch
-            type=semver,pattern={{version}}
-            type=semver,pattern={{major}}.{{minor}}
-            type=semver,pattern={{major}}
-          flavor: |
-            latest=true
-
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v3.2.0
-        with:
-          context: .
-          push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+          -Dspring-boot.build-image.imageName=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.app_version }} \
+          -Dspring-boot.build-image.publish=true
