@@ -197,4 +197,16 @@
 
     </build>
 
+    <repositories>
+
+        <repository>
+            <id>github</id>
+            <url>https://maven.pkg.github.com/dmfrey/demo-parent</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+
+    </repositories>
+
 </project>
