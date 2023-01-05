@@ -45,8 +45,7 @@ jobs:
 
       - name: Build, test and create the image
         run: |
-          VERSION=$(./mvnw help:evaluate -Dexpression=project.groupId -q -DforceStdout)
-          
+          VERSION=$(./mvnw help:evaluate -Dexpression=project.version -q -DforceStdout) && \
           ./mvnw -B -s settings.xml \
           -pl :person-app \
           --no-transfer-progress \
