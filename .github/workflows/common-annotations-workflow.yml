@@ -31,9 +31,11 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: Build, test and create the image
+      - name: Build, test and create the artifact
         run: |
           ./mvnw -B \
           -pl :commons-annotations \
           --no-transfer-progress \
           clean install deploy
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
