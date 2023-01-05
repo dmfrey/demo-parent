@@ -13,6 +13,8 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: person-app
+  GITHUB_USERNAME: ${{ github.actor }}
+  GITHUB_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
 
@@ -43,7 +45,7 @@ jobs:
 
       - name: Build, test and create the image
         run: |
-          ./mvnw -B \
+          ./mvnw -B -s settings.xml \
           -pl :person-app \
           --no-transfer-progress \
           clean install spring-boot:build-image \
