@@ -53,7 +53,7 @@ jobs:
           -pl :person-app \
           --no-transfer-progress \
           clean install deploy spring-boot:build-image \
-          -Dspring-boot.build-image.imageName=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.ref }}
+          -Dspring-boot.build-image.imageName=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.ref_name }}
 
       - name: Extract metadata (tags, labels) for Docker
         id: meta
