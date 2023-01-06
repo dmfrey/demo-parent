@@ -27,11 +27,11 @@ jobs:
       packages: write
 
     steps:
-#      - name: Log in to the Container registry
-#        uses: docker/login-action@v2
-#        with:
-#          username: ${{ secrets.DH_USER }}
-#          password: ${{ secrets.DH_PAT }}
+      - name: Log in to the Container registry
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DH_USER }}
+          password: ${{ secrets.DH_PAT }}
 
       - name: Checkout the source code
         uses: actions/checkout@v3
@@ -53,7 +53,8 @@ jobs:
           -pl :person-app \
           --no-transfer-progress \
           clean install deploy spring-boot:build-image \
-          -Dspring-boot.build-image.imageName=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.app_version }} \
-          -Dspring-boot.build-image.publish=true \
-          -Ddocker.publishRegistry.username=${{ secrets.DH_USER }} \
-          -Ddocker.publishRegistry.password=${{ secrets.DH_PAT }}
+          -Dspring-boot.build-image.imageName=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.app_version }}
+
+      - name: Push the image
+        run: |
+          docker push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.app_version }}
