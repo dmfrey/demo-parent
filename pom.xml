@@ -26,7 +26,7 @@
 		<code-coverage.skip>false</code-coverage.skip>
 		<code-coverage.minimum>0.8</code-coverage.minimum>
 		<pmd.version>3.19.0</pmd.version>
-		<spotbugs.version>4.7.2.0</spotbugs.version>
+		<spotbugs.version>4.7.3.0</spotbugs.version>
 
 	</properties>
 
