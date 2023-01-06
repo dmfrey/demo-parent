@@ -68,12 +68,6 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <image>
-                        <env>
-                            <BP_SPRING_CLOUD_BINDINGS_DISABLED>true</BP_SPRING_CLOUD_BINDINGS_DISABLED>
-                            <BPL_SPRING_CLOUD_BINDINGS_DISABLED>true</BPL_SPRING_CLOUD_BINDINGS_DISABLED>
-                        </env>
-                    </image>
                     <pullPolicy>IF_NOT_PRESENT</pullPolicy>
                 </configuration>
             </plugin>
