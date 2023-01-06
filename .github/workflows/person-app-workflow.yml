@@ -49,7 +49,7 @@ jobs:
 
       - name: Build, test and create the image
         run: |
-          ./mvnw -B -s settings.xml \
+          ./mvnw -e -B -s settings.xml \
           -pl :person-app \
           --no-transfer-progress \
           clean install deploy spring-boot:build-image \
