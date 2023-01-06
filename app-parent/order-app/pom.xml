@@ -13,6 +13,16 @@
     <artifactId>order-app</artifactId>
     <name>order-app</name>
 
+    <distributionManagement>
+
+        <repository>
+            <id>github</id>
+            <name>GitHub Packages</name>
+            <url>https://maven.pkg.github.com/dmfrey/demo-parent</url>
+        </repository>
+
+    </distributionManagement>
+
     <dependencies>
 
         <dependency>
