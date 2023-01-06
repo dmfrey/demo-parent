@@ -53,7 +53,5 @@ jobs:
           -pl :person-app \
           --no-transfer-progress \
           clean install deploy spring-boot:build-image \
-          -Dspring-boot.build-image.imageName=dfrey501/${{ env.IMAGE_NAME }}:${{ env.app_version }} \
-          -Dspring-boot.build-image.publish=true \
-          -Ddocker.publishRegistry.username=dfrey501 \
-          -Ddocker.publishRegistry.password=${{ secrets.DH_PAT }}
+          -Dspring-boot.build-image.imageName=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.app_version }} \
+          -Dspring-boot.build-image.publish=true
