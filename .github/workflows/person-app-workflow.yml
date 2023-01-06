@@ -11,7 +11,7 @@ on:
       - 'app-parent/person-app/**'
 
 env:
-  REGISTRY: ghcr.io/dmfrey/demo-parent
+  REGISTRY: ${{ secrets.DH_USER }}
   IMAGE_NAME: person-app
   GITHUB_USERNAME: ${{ github.actor }}
   GITHUB_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
@@ -30,9 +30,8 @@ jobs:
       - name: Log in to the Container registry
         uses: docker/login-action@v2
         with:
-          registry: ${{ env.REGISTRY }}
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          username: ${{ secrets.DH_USER }}
+          password: ${{ secrets.DH_PAT }}
 
       - name: Checkout the source code
         uses: actions/checkout@v3
@@ -56,5 +55,5 @@ jobs:
           clean install deploy spring-boot:build-image \
           -Dspring-boot.build-image.imageName=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.app_version }} \
           -Dspring-boot.build-image.publish=true \
-          -Ddocker.publishRegistry.username=${{ github.actor }} \
-          -Ddocker.publishRegistry.password=${{ secrets.CR_PAT }}
+          -Ddocker.publishRegistry.username=${{ secrets.DH_USER }} \
+          -Ddocker.publishRegistry.password=${{ secrets.DH_PAT }}
