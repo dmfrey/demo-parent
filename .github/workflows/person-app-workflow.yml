@@ -11,7 +11,7 @@ on:
       - 'app-parent/person-app/**'
 
 env:
-  REGISTRY: ghcr.io/${{ github.actor }}
+  REGISTRY: ghcr.io/dmfrey/demo-parent
   IMAGE_NAME: person-app
   GITHUB_USERNAME: ${{ github.actor }}
   GITHUB_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
@@ -28,7 +28,7 @@ jobs:
 
     steps:
       - name: Log in to the Container registry
-        uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
+        uses: docker/login-action@2.1
         with:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
