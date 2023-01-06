@@ -56,5 +56,4 @@ jobs:
           clean install deploy spring-boot:build-image \
           -Dspring-boot.build-image.imageName=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.app_version }} \
           -Dspring-boot.build-image.publish=true \
-          -Ddocker.publishRegistry.username=${{ github.actor }} \
-          -Ddocker.publishRegistry.password=${{ secrets.GITHUB_TOKEN }}
+          -Ddocker.publishRegistry.token=${{ secrets.CR_PAT }}
