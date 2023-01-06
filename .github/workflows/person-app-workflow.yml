@@ -13,6 +13,8 @@ on:
 env:
   REGISTRY: ghcr.io/${{ github.actor }}
   IMAGE_NAME: person-app
+  GITHUB_USERNAME: ${{ github.actor }}
+  GITHUB_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
 
@@ -44,7 +46,6 @@ jobs:
 
       - name: Get app version
         run: |
-          cat ~/.m2/settings.xml
           echo "app_version=$(./mvnw -s settings.xml -pl :person-app help:evaluate -Dexpression=project.version -q -DforceStdout)-$(git rev-parse --short HEAD)" >> $GITHUB_ENV
 
       - name: Build, test and create the image
