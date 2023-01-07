@@ -54,7 +54,7 @@ jobs:
           -pl :order-app \
           --no-transfer-progress \
           clean install deploy spring-boot:build-image \
-          -Dimage=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.app_version }}
+          -Dspring-boot.build-image.imageName=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.app_version }}
 
       - name: Push the image
         run: |
