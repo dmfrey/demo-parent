@@ -43,19 +43,47 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
           cache: 'maven'
+          path: 'source'
 
       - name: Get app version
         run: |
+          cd source
           echo "app_version=$(./mvnw -s settings.xml -pl :person-app help:evaluate -Dexpression=project.version -q -DforceStdout)-$(git rev-parse --short HEAD)" >> $GITHUB_ENV
+          cd ..
 
       - name: Build, test and create the image
         run: |
+          cd source
           ./mvnw -e -B -s settings.xml \
           -pl :person-app \
           --no-transfer-progress \
           clean install deploy spring-boot:build-image \
           -Dspring-boot.build-image.imageName=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.app_version }}
+          cd ..
 
       - name: Push the image
         run: |
           docker push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.app_version }}
+
+      - name: Checkout GitOps
+        uses: actions/checkout@v2
+        with:
+          repository: 'dmfrey/demo-parent-gitops'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          ref: 'HEAD'
+          path: 'gitops'
+
+      - name: Update GitOps Version
+        run: |
+          cd gitops
+          cd charts/person-app
+          old_version=$(cat ./values.yaml | grep tag: | awk '{print $2}')
+          echo "Old Version: $old_version, New Version: ${{ env.app_version }}"
+          sed -i "s/$old_version/${{ env.app_version }}/" ./values.yaml
+          cd ..
+          git config user.name ${{ gitub.actor }}
+          git config user.email ${{ gitub.actor }}
+          git add .
+          git commit -m "update version to ${{ env.app_version }}"
+          git push
+          cd ..

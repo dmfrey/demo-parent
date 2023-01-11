@@ -61,12 +61,6 @@ spring:
     activate:
       on-profile: kubernetes
 
-  datasource:
-    url: jdbc:postgresql://person-app-db:5432/person-app-db
-
-  zipkin:
-    enabled: true
-
 logging.level:
   org.springframework.cloud.contract.stubrunner: INFO
   org.springframework.cloud.kubernetes: INFO
