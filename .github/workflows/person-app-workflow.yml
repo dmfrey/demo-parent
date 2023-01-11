@@ -71,7 +71,7 @@ jobs:
         with:
           repository: 'dmfrey/demo-parent-gitops'
           token: ${{ secrets.GITHUB_TOKEN }}
-          ref: 'HEAD'
+          ref: 'main'
           path: gitops
 
       - name: Update GitOps Version
