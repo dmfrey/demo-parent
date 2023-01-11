@@ -14,6 +14,16 @@
     <name>commons-parent</name>
     <packaging>pom</packaging>
 
+    <distributionManagement>
+
+        <repository>
+            <id>github</id>
+            <name>GitHub Packages</name>
+            <url>https://maven.pkg.github.com/dmfrey/demo-parent</url>
+        </repository>
+
+    </distributionManagement>
+
     <modules>
         <module>commons-annotations</module>
         <module>commons-dependencies</module>
