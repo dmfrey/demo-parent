@@ -71,7 +71,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: 'dmfrey/demo-parent-gitops'
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GITOPS_TOKEN }}
           persist-credentials: 'true'
           ref: 'main'
           path: gitops
