@@ -76,10 +76,10 @@
         </dependency>
 
         <!-- Demo Commons dependencies -->
-<!--        <dependency>-->
-<!--            <groupId>com.vmware.tanzu-labs</groupId>-->
-<!--            <artifactId>commons-annotations</artifactId>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>com.vmware.tanzu-labs</groupId>
+            <artifactId>commons-annotations</artifactId>
+        </dependency>
 
         <!-- Database dependencies -->
         <dependency>

@@ -213,6 +213,7 @@
 			<id>sonar</id>
 
 			<properties>
+				<!--suppress UnresolvedMavenProperty -->
 				<sonar.login>${env.SONAR_TOKEN}</sonar.login>
 			</properties>
 
