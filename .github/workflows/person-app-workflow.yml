@@ -43,7 +43,7 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
           cache: 'maven'
-          path: 'source'
+          path: source
 
       - name: Get app version
         run: |
@@ -71,7 +71,7 @@ jobs:
           repository: 'dmfrey/demo-parent-gitops'
           token: ${{ secrets.GITHUB_TOKEN }}
           ref: 'HEAD'
-          path: 'gitops'
+          path: gitops
 
       - name: Update GitOps Version
         run: |
