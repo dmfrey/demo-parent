@@ -20,6 +20,7 @@
 		<spring-boot.version>3.0.1</spring-boot.version>
 		<spring-cloud.version>2022.0.0</spring-cloud.version>
 		<spring-cloud-contract.version>4.0.0</spring-cloud-contract.version>
+		<groovy.version>4.0.6</groovy.version>
 		<springdoc.version>1.6.11</springdoc.version>
 
 		<jacoco-maven-plugin.version>0.8.8</jacoco-maven-plugin.version>
@@ -93,6 +94,13 @@
 					<groupId>org.springframework.cloud</groupId>
 					<artifactId>spring-cloud-contract-maven-plugin</artifactId>
 					<version>${spring-cloud-contract.version}</version>
+					<dependencies>
+						<dependency>
+							<groupId>org.apache.groovy</groupId>
+							<artifactId>groovy</artifactId>
+							<version>${groovy.version}</version>
+						</dependency>
+					</dependencies>
 				</plugin>
 
 				<plugin>
