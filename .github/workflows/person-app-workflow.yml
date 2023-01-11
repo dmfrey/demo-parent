@@ -77,8 +77,10 @@ jobs:
 
       - name: Setup git config
         run: |
+          cd gitops
           git config user.name "GitHub Actions Bot"
           git config user.email "<>"
+          cd ..
 
       - name: Update GitOps Version
         run: |
