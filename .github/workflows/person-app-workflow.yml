@@ -81,8 +81,8 @@ jobs:
           echo "Old Version: $old_version, New Version: ${{ env.app_version }}"
           sed -i "s/$old_version/${{ env.app_version }}/" ./values.yaml
           cd ..
-          git config user.name ${{ gitub.actor }}
-          git config user.email ${{ gitub.actor }}
+          git config user.name ${{ github.actor }}
+          git config user.email ${{ github.actor }}
           git add .
           git commit -m "update version to ${{ env.app_version }}"
           git push
