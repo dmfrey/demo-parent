@@ -1,4 +1,4 @@
-name: commons-dependencies-workflow
+name: commons-parent-workflow
 
 on:
   push:
