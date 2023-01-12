@@ -1,6 +1,7 @@
 debug: false
 
 logging:
+  pattern.level: "%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]"
   level:
     org.springframework.cloud.kubernetes: DEBUG
     org.springframework.data: DEBUG
@@ -19,9 +20,6 @@ spring:
   mvc:
     log-request-details: true
 
-  zipkin:
-    enabled: false
-
 management:
   endpoints:
     web.exposure.include: '*'
@@ -35,6 +33,16 @@ management:
           show-details: always
     restart:
       enabled: true
+  metrics:
+    distribution:
+      percentiles-histogram:
+        http:
+          server:
+            requests: true
+  tracing:
+    enabled: false
+    sampling:
+      probability: 1.0
 
 webservice:
   order-resource-url: http://localhost:8081
@@ -45,9 +53,6 @@ spring:
   config:
     activate:
       on-profile: docker
-
-  zipkin:
-    enabled: true
 
 logging:
   file:
