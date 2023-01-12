@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.boot.WebApplicationType;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.cloud.circuitbreaker.resilience4j.Resilience4JCircuitBreakerFactory;
 import org.springframework.cloud.circuitbreaker.resilience4j.Resilience4JConfigurationProperties;
@@ -123,7 +122,6 @@ class OrderResourceAdapterTests {
     }
 
     @SpringBootConfiguration
-    @EnableAutoConfiguration
     @Import({ OrderResourceConfiguration.class, OrderResourceAdapter.class })
     protected static class TestConfiguration {
 
