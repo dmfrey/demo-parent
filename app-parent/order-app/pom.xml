@@ -63,11 +63,11 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <image>
-                        <builder>paketobuildpacks/builder:tiny</builder>
+<!--                        <builder>paketobuildpacks/builder:tiny</builder>-->
                         <env>
                             <BP_NATIVE_IMAGE>true</BP_NATIVE_IMAGE>
-                            <BP_SPRING_CLOUD_BINDINGS_DISABLED>true</BP_SPRING_CLOUD_BINDINGS_DISABLED>
-                            <BPL_SPRING_CLOUD_BINDINGS_DISABLED>true</BPL_SPRING_CLOUD_BINDINGS_DISABLED>
+<!--                            <BP_SPRING_CLOUD_BINDINGS_DISABLED>true</BP_SPRING_CLOUD_BINDINGS_DISABLED>-->
+<!--                            <BPL_SPRING_CLOUD_BINDINGS_DISABLED>true</BPL_SPRING_CLOUD_BINDINGS_DISABLED>-->
                         </env>
                     </image>
                     <pullPolicy>IF_NOT_PRESENT</pullPolicy>
