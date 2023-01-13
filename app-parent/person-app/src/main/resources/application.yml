@@ -7,6 +7,7 @@ logging:
     org.springframework.data: DEBUG
     org.springframework.web: DEBUG
     com.vmware.tanzulabs.app: DEBUG
+    person-app.query-logger: INFO
 
 spring:
 
@@ -19,6 +20,15 @@ spring:
 
   mvc:
     log-request-details: true
+
+jdbc:
+  datasource-proxy:
+    enabled: true
+    logging: slf4j
+    query:
+      log-level: INFO
+      logger-name: person-app.query-logger
+    multiline: false
 
 management:
   endpoints:

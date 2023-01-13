@@ -7,6 +7,7 @@ logging:
     org.springframework.data: DEBUG
     org.springframework.web: DEBUG
     com.vmware.tanzulabs.app: DEBUG
+    order-app.query-logger: INFO
 
 server:
   port: 9081
@@ -22,6 +23,15 @@ spring:
 
   mvc:
     log-request-details: true
+
+jdbc:
+  datasource-proxy:
+    enabled: true
+    logging: slf4j
+    query:
+      log-level: INFO
+      logger-name: order-app.query-logger
+    multiline: false
 
 management:
   endpoints:
