@@ -11,6 +11,10 @@ on:
       - 'commons-parent/pom.xml'
       - 'commons-parent/commons-dependencies/**'
 
+env:
+  GITHUB_USERNAME: ${{ github.actor }}
+  GITHUB_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
+
 jobs:
 
   build-and-test:

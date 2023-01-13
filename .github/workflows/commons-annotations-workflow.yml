@@ -11,6 +11,10 @@ on:
       - 'commons-parent/pom.xml'
       - 'commons-parent/commons-annotations/**'
 
+env:
+  GITHUB_USERNAME: ${{ github.actor }}
+  GITHUB_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
+
 jobs:
 
   build-and-test:
@@ -43,5 +47,3 @@ jobs:
           -pl :commons-annotations \
           --no-transfer-progress \
           clean install deploy
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

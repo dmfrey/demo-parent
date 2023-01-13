@@ -10,6 +10,10 @@ on:
       - 'pom.xml'
       - 'commons-parent/pom.xml'
 
+env:
+  GITHUB_USERNAME: ${{ github.actor }}
+  GITHUB_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
+
 jobs:
 
   build-and-test:

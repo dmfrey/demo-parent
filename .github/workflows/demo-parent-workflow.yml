@@ -9,6 +9,10 @@ on:
       - '.github/workflows/demo-parent-workflow.yml'
       - 'pom.xml'
 
+env:
+  GITHUB_USERNAME: ${{ github.actor }}
+  GITHUB_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
+
 jobs:
 
   build-and-test:

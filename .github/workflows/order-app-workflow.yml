@@ -58,7 +58,7 @@ jobs:
       - name: Build, test and create the image
         run: |
           cd source
-          ./mvnw -e -B -s settings.xml \
+          ./mvnw -B -s settings.xml \
           -pl :order-app \
           --no-transfer-progress \
           clean install deploy spring-boot:build-image \
