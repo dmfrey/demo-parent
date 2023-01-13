@@ -26,6 +26,7 @@
 		<java.version>17</java.version>
 		<maven.compiler.source>${java.version}</maven.compiler.source>
 		<maven.compiler.target>${java.version}</maven.compiler.target>
+		<graalvm.native-maven-plugin.version>0.9.19</graalvm.native-maven-plugin.version>
 
 		<spring-boot.version>3.0.1</spring-boot.version>
 		<spring-cloud.version>2022.0.0</spring-cloud.version>
@@ -111,6 +112,12 @@
 							<version>${groovy.version}</version>
 						</dependency>
 					</dependencies>
+				</plugin>
+
+				<plugin>
+					<groupId>org.graalvm.buildtools</groupId>
+					<artifactId>native-maven-plugin</artifactId>
+					<version>${graalvm.native-maven-plugin.version}</version>
 				</plugin>
 
 				<plugin>

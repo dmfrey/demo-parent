@@ -59,6 +59,7 @@ jobs:
         run: |
           cd source
           ./mvnw -B -s settings.xml \
+          -Pnative \
           -pl :person-app \
           --no-transfer-progress \
           clean install deploy spring-boot:build-image \
