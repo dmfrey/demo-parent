@@ -29,7 +29,7 @@ class OrdersByCustomerIdEndpoint {
 
     @GetMapping( "/orders/{customerId}" )
     @CrossOrigin
-    List<OrderResponse> ordersByCustomerId( @PathVariable String customerId ) {
+    List<OrderResponse> ordersByCustomerId( @PathVariable( "customerId" ) String customerId ) {
 
         return this.useCase.execute( new OrdersByCustomerIdUseCase.OrdersByCustomerIdCommand( customerId ) ).stream()
                 .map( order -> new OrderResponse( order.orderId(), order.customerId() ) )
