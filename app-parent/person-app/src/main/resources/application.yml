@@ -40,12 +40,12 @@ management:
           server:
             requests: true
   tracing:
-    enabled: false
+    enabled: true
     sampling:
       probability: 1.0
 
 webservice:
-  order-resource-url: http://localhost:8081
+  order-resource-url: http://localhost:9081
 
 ---
 spring:

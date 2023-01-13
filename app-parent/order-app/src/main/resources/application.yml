@@ -8,6 +8,9 @@ logging:
     org.springframework.web: DEBUG
     com.vmware.tanzulabs.app: DEBUG
 
+server:
+  port: 9081
+
 spring:
 
   application:
@@ -40,7 +43,7 @@ management:
           server:
             requests: true
   tracing:
-    enabled: false
+    enabled: true
     sampling:
       probability: 1.0
 
