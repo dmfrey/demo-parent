@@ -39,7 +39,7 @@ jobs:
 
       - name: Build, test and create the artifact
         run: |
-          ./mvnw -B \
+          ./mvnw -B -s settings.xml \
           -pl :commons-annotations \
           --no-transfer-progress \
           clean install deploy
