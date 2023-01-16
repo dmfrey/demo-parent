@@ -65,42 +65,40 @@
                     <image>
 <!--                        <builder>paketobuildpacks/builder:tiny</builder>-->
                         <env>
-                            <BP_NATIVE_IMAGE>true</BP_NATIVE_IMAGE>
-<!--                            <BP_SPRING_CLOUD_BINDINGS_DISABLED>true</BP_SPRING_CLOUD_BINDINGS_DISABLED>-->
-<!--                            <BPL_SPRING_CLOUD_BINDINGS_DISABLED>true</BPL_SPRING_CLOUD_BINDINGS_DISABLED>-->
+<!--                            <BP_NATIVE_IMAGE>true</BP_NATIVE_IMAGE>-->
                         </env>
                     </image>
                     <pullPolicy>IF_NOT_PRESENT</pullPolicy>
                 </configuration>
-                <executions>
-                    <execution>
-                        <id>process-aot</id>
-                        <goals>
-                            <goal>process-aot</goal>
-                        </goals>
-                    </execution>
-                </executions>
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <id>process-aot</id>-->
+<!--                        <goals>-->
+<!--                            <goal>process-aot</goal>-->
+<!--                        </goals>-->
+<!--                    </execution>-->
+<!--                </executions>-->
             </plugin>
 
-            <plugin>
-                <groupId>org.graalvm.buildtools</groupId>
-                <artifactId>native-maven-plugin</artifactId>
-                <configuration>
-                    <classesDirectory>${project.build.outputDirectory}</classesDirectory>
-                    <metadataRepository>
-                        <enabled>true</enabled>
-                    </metadataRepository>
-                    <requiredVersion>22.3</requiredVersion>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>add-reachability-metadata</id>
-                        <goals>
-                            <goal>add-reachability-metadata</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+<!--            <plugin>-->
+<!--                <groupId>org.graalvm.buildtools</groupId>-->
+<!--                <artifactId>native-maven-plugin</artifactId>-->
+<!--                <configuration>-->
+<!--                    <classesDirectory>${project.build.outputDirectory}</classesDirectory>-->
+<!--                    <metadataRepository>-->
+<!--                        <enabled>true</enabled>-->
+<!--                    </metadataRepository>-->
+<!--                    <requiredVersion>22.3</requiredVersion>-->
+<!--                </configuration>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <id>add-reachability-metadata</id>-->
+<!--                        <goals>-->
+<!--                            <goal>add-reachability-metadata</goal>-->
+<!--                        </goals>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--            </plugin>-->
 
         </plugins>
 

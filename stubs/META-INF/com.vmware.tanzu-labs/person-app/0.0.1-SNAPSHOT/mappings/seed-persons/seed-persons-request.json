@@ -1,5 +1,5 @@
 {
-  "id" : "ff2560bd-121d-4d30-94c1-737c5b238683",
+  "id" : "dd158cec-b709-4695-b34f-188c4c5d31f7",
   "request" : {
     "urlPath" : "/seed",
     "method" : "POST"
@@ -8,5 +8,5 @@
     "status" : 202,
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "ff2560bd-121d-4d30-94c1-737c5b238683"
+  "uuid" : "dd158cec-b709-4695-b34f-188c4c5d31f7"
 }

@@ -62,7 +62,7 @@ jobs:
           -Pnative \
           -pl :order-app \
           --no-transfer-progress \
-          clean install deploy spring-boot:build-image \
+          clean install deploy spring-boot:build-info spring-boot:build-image \
           -Dspring-boot.build-image.imageName=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.app_version }}
           cd ..
 
