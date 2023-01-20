@@ -4,6 +4,8 @@ import com.vmware.tanzulabs.app.annotations.endpoint.EndpointAdapter;
 import com.vmware.tanzulabs.app.application.in.OrdersByCustomerIdUseCase;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.info.Info;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,6 +21,8 @@ import java.util.List;
 )
 class OrdersByCustomerIdEndpoint {
 
+    private static final Logger log = LoggerFactory.getLogger( OrdersByCustomerIdEndpoint.class );
+
     private final OrdersByCustomerIdUseCase useCase;
 
     OrdersByCustomerIdEndpoint( final OrdersByCustomerIdUseCase useCase ) {
@@ -30,6 +34,7 @@ class OrdersByCustomerIdEndpoint {
     @GetMapping( "/orders/{customerId}" )
     @CrossOrigin
     List<OrderResponse> ordersByCustomerId( @PathVariable( "customerId" ) String customerId ) {
+        log.info( "ordersByCustomerId : enter, customerId = {}", customerId );
 
         return this.useCase.execute( new OrdersByCustomerIdUseCase.OrdersByCustomerIdCommand( customerId ) ).stream()
                 .map( order -> new OrderResponse( order.orderId(), order.customerId() ) )

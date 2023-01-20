@@ -4,6 +4,8 @@ import com.vmware.tanzulabs.app.annotations.endpoint.EndpointAdapter;
 import com.vmware.tanzulabs.app.application.in.ListPersonUseCase;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.info.Info;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -20,6 +22,8 @@ import java.util.Optional;
 )
 class ListPersonEndpoint {
 
+    private static final Logger log = LoggerFactory.getLogger( ListPersonEndpoint.class );
+
     private final ListPersonUseCase listPersonUseCase;
 
     ListPersonEndpoint( final ListPersonUseCase listPersonUseCase ) {
@@ -31,6 +35,7 @@ class ListPersonEndpoint {
     @GetMapping( "/persons" )
     @CrossOrigin
     List<PersonResponse> listPersons() {
+        log.info( "listPersons : enter" );
 
         return this.listPersonUseCase.execute().stream()
                 .map( person -> {
