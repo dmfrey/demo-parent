@@ -1,0 +1,42 @@
+debug: false
+
+logging:
+  pattern.level: "%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]"
+  level:
+    org.springframework.cloud.kubernetes: DEBUG
+    org.springframework.data: DEBUG
+    org.springframework.web: DEBUG
+    com.vmware.tanzulabs.app: DEBUG
+    order-app.query-logger: INFO
+
+server:
+  port: 8990
+
+spring:
+
+  application:
+    name: schema-registry
+
+management:
+  endpoints:
+    web.exposure.include: '*'
+  endpoint:
+    health:
+      show-details: ALWAYS
+      group:
+        liveness:
+          show-details: always
+        readiness:
+          show-details: always
+    restart:
+      enabled: true
+  metrics:
+    distribution:
+      percentiles-histogram:
+        http:
+          server:
+            requests: true
+  tracing:
+    enabled: true
+    sampling:
+      probability: 1.0

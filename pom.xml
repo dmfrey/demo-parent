@@ -28,7 +28,7 @@
 		<maven.compiler.target>${java.version}</maven.compiler.target>
 		<graalvm.native-maven-plugin.version>0.9.19</graalvm.native-maven-plugin.version>
 
-		<spring-boot.version>3.0.1</spring-boot.version>
+		<spring-boot.version>3.0.2</spring-boot.version>
 		<spring-cloud.version>2022.0.0</spring-cloud.version>
 		<spring-cloud-contract.version>4.0.0</spring-cloud-contract.version>
 		<groovy.version>4.0.6</groovy.version>
@@ -45,6 +45,7 @@
 	<modules>
 		<module>commons-parent</module>
 		<module>app-parent</module>
+		<module>sidecar-parent</module>
 	</modules>
 
 	<dependencies>

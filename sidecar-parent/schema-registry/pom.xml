@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.vmware.tanzu-labs</groupId>
+        <artifactId>sidecar-parent</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>schema-registry</artifactId>
+    <name>schema-registry</name>
+
+    <distributionManagement>
+
+        <repository>
+            <id>github</id>
+            <name>GitHub Packages</name>
+            <url>https://maven.pkg.github.com/dmfrey/demo-parent</url>
+        </repository>
+
+    </distributionManagement>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-stream-schema-registry-server</artifactId>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+
+        <plugins>
+
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <image>
+<!--                        <builder>paketobuildpacks/builder:tiny</builder>-->
+                        <env>
+<!--                            <BP_NATIVE_IMAGE>true</BP_NATIVE_IMAGE>-->
+                        </env>
+                    </image>
+                    <pullPolicy>IF_NOT_PRESENT</pullPolicy>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <id>process-aot</id>-->
+<!--                        <goals>-->
+<!--                            <goal>process-aot</goal>-->
+<!--                        </goals>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+            </plugin>
+
+<!--            <plugin>-->
+<!--                <groupId>org.graalvm.buildtools</groupId>-->
+<!--                <artifactId>native-maven-plugin</artifactId>-->
+<!--                <configuration>-->
+<!--                    <classesDirectory>${project.build.outputDirectory}</classesDirectory>-->
+<!--                    <metadataRepository>-->
+<!--                        <enabled>true</enabled>-->
+<!--                    </metadataRepository>-->
+<!--                    <requiredVersion>22.3</requiredVersion>-->
+<!--                </configuration>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <id>add-reachability-metadata</id>-->
+<!--                        <goals>-->
+<!--                            <goal>add-reachability-metadata</goal>-->
+<!--                        </goals>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--            </plugin>-->
+
+        </plugins>
+
+    </build>
+
+</project>
+
+

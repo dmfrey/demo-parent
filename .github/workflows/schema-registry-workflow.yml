@@ -1,0 +1,94 @@
+name: schema-registry-workflow
+
+on:
+  push:
+    branches:
+      - develop
+    paths:
+      - '.github/workflows/schema-registry-workflow.yml'
+      - 'pom.xml'
+      - 'sidecar-parent/pom.xml'
+      - 'sidecar-parent/schema-registry/**'
+
+env:
+  REGISTRY: ${{ secrets.DH_USER }}
+  IMAGE_NAME: schema-registry
+  GITHUB_USERNAME: ${{ github.actor }}
+  GITHUB_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+
+  build-and-test:
+    name: Build and Test source
+
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+      repository-projects: write
+
+    steps:
+
+      - name: Log in to the Container registry
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DH_USER }}
+          password: ${{ secrets.DH_PAT }}
+
+      - name: Checkout the source code
+        uses: actions/checkout@v3
+        with:
+          path: source
+
+      - name: Setup JDK
+        uses: graalvm/setup-graalvm@v1
+        with:
+          version: '22.3.0'
+          java-version: '17'
+          components: 'native-image'
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          native-image-job-reports: 'true'
+
+      - name: Get app version
+        run: |
+          cd source
+          echo "app_version=$(./mvnw -s settings.xml -pl :schema-registry help:evaluate -Dexpression=project.version -q -DforceStdout)-$(git rev-parse --short HEAD)" >> $GITHUB_ENV
+          cd ..
+
+      - name: Build, test and create the image
+        run: |
+          cd source
+          ./mvnw -B -s settings.xml \
+          -pl :schema-registry \
+          --no-transfer-progress \
+          clean install deploy spring-boot:build-info spring-boot:build-image \
+          -Dspring-boot.build-image.imageName=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.app_version }}
+          cd ..
+
+      - name: Push the image
+        run: |
+          docker push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.app_version }}
+
+      - name: Checkout GitOps
+        uses: actions/checkout@v2
+        with:
+          repository: 'dmfrey/demo-parent-gitops'
+          token: ${{ secrets.GITOPS_TOKEN }}
+          persist-credentials: 'true'
+          ref: 'main'
+          path: gitops
+
+      - name: Update GitOps Version
+        run: |
+          cd gitops
+          cd charts/schema-registry
+          old_version=$(cat ./values.yaml | grep tag: | awk '{print $2}')
+          echo "Old Version: $old_version, New Version: ${{ env.app_version }}"
+          sed -i "s/$old_version/${{ env.app_version }}/" ./values.yaml
+          cd ../..
+          git config user.name "${{ github.actor }}"
+          git config user.email "<>"
+          git add .
+          git commit -m "update version to ${{ env.app_version }}"
+          git push
+          cd ..
