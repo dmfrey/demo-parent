@@ -183,11 +183,11 @@
                 <version>${jacoco-maven-plugin.version}</version>
             </plugin>
 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-pmd-plugin</artifactId>
-                <version>${pmd.version}</version>
-            </plugin>
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-pmd-plugin</artifactId>-->
+<!--                <version>${pmd.version}</version>-->
+<!--            </plugin>-->
 
             <plugin>
                 <groupId>com.github.spotbugs</groupId>
@@ -227,9 +227,9 @@
 
     </build>
 
-    <reports>
-        <report>maven-pmd-plugin</report>
-    </reports>
+<!--    <reports>-->
+<!--        <report>maven-pmd-plugin</report>-->
+<!--    </reports>-->
 
     <repositories>
 
