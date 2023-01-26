@@ -227,6 +227,10 @@
 
     </build>
 
+    <reports>
+        <report>maven-pmd-plugin</report>
+    </reports>
+
     <repositories>
 
         <repository>
