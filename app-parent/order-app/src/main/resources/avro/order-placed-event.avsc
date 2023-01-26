@@ -3,8 +3,23 @@
   "type" : "record",
   "name" : "OrderPlaced",
   "fields" : [
-    {"name":"id","type":"string","logicalType":"uuid"},
-    {"name":"customerId", "type":"string","logicalType":"uuid"},
-    {"name":"orderCreated", "type":"long", "logicalType":"timestamp-millis"}
+    {
+        "name":"orderId",
+        "type":["null", {
+            "type":"string",
+            "logicalType":"uuid"
+        }]
+    },
+    {
+        "name":"customerId",
+        "type":"string"
+    },
+    {
+        "name":"orderCreated",
+        "type":["null", {
+            "type":"long",
+            "logicalType":"timestamp-millis"
+        }]
+    }
   ]
 }

@@ -50,10 +50,10 @@ class OrderPersistenceAdapter implements FindOrdersByCustomerIdPort, SaveOrderPo
         var saved = this.orderRepository.save( entity );
         log.debug( "save : orderEntity saved [{}]", saved );
 
-        OrderPlaced event = new OrderPlaced();
-        event.setId( saved.getId().toString() );
+        var event = new OrderPlaced();
+        event.setOrderId( saved.getId() );
         event.setCustomerId( saved.getCustomerId() );
-        event.setOrderCreated( LocalDateTime.now().toEpochSecond( ZoneOffset.UTC ) );
+        event.setOrderCreated( LocalDateTime.now().toInstant( ZoneOffset.UTC ) );
         this.eventPublisher.publishEvent( event );
 
         return saved.getId();

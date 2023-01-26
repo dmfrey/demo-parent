@@ -7,6 +7,7 @@ import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
 import com.vmware.tanzulabs.demo.events.OrderPlaced;
+import org.springframework.util.MimeType;
 
 @Component
 class OrderEventsAdapter {
@@ -24,7 +25,7 @@ class OrderEventsAdapter {
     @EventListener
     public void sendOrderPlacedEvent( OrderPlaced event ) {
 
-        this.streamBridge.send( "order-placed-out-0", event );
+        this.streamBridge.send( "order-placed-out-0", event, MimeType.valueOf( "application/*+avro" ) );
         log.info( "sendOrderPlacedEvent : order placed event [{}] sent!", event );
 
     }
