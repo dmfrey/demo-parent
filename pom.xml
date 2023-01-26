@@ -33,6 +33,7 @@
 		<spring-cloud-contract.version>4.0.0</spring-cloud-contract.version>
 		<groovy.version>4.0.6</groovy.version>
 		<springdoc.version>2.0.2</springdoc.version>
+		<avro.version>1.11.1</avro.version>
 
 		<jacoco-maven-plugin.version>0.8.8</jacoco-maven-plugin.version>
 		<code-coverage.skip>false</code-coverage.skip>
@@ -120,6 +121,25 @@
 					<artifactId>native-maven-plugin</artifactId>
 					<version>${graalvm.native-maven-plugin.version}</version>
 					<extensions>true</extensions>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.avro</groupId>
+					<artifactId>avro-maven-plugin</artifactId>
+					<version>${avro.version}</version>
+					<executions>
+						<execution>
+							<phase>generate-sources</phase>
+							<goals>
+								<goal>schema</goal>
+								<goal>protocol</goal>
+								<goal>idl-protocol</goal>
+							</goals>
+							<configuration>
+								<sourceDirectory>src/main/resources/avro</sourceDirectory>
+							</configuration>
+						</execution>
+					</executions>
 				</plugin>
 
 				<plugin>

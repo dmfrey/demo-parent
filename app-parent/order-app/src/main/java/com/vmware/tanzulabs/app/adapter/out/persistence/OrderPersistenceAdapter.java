@@ -5,10 +5,14 @@ import com.vmware.tanzulabs.app.application.out.DeleteAllOrdersPort;
 import com.vmware.tanzulabs.app.application.out.FindOrdersByCustomerIdPort;
 import com.vmware.tanzulabs.app.application.out.SaveOrderPort;
 import com.vmware.tanzulabs.app.domain.Order;
+import com.vmware.tanzulabs.demo.events.OrderPlaced;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 import java.util.List;
 import java.util.UUID;
 
@@ -19,10 +23,12 @@ class OrderPersistenceAdapter implements FindOrdersByCustomerIdPort, SaveOrderPo
     private static final Logger log = LoggerFactory.getLogger( OrderPersistenceAdapter.class );
 
     private final OrderRepository orderRepository;
+    private final ApplicationEventPublisher eventPublisher;
 
-    OrderPersistenceAdapter( final OrderRepository orderRepository ) {
+    OrderPersistenceAdapter( final OrderRepository orderRepository, final ApplicationEventPublisher eventPublisher ) {
 
         this.orderRepository = orderRepository;
+        this.eventPublisher = eventPublisher;
 
     }
 
@@ -43,6 +49,12 @@ class OrderPersistenceAdapter implements FindOrdersByCustomerIdPort, SaveOrderPo
 
         var saved = this.orderRepository.save( entity );
         log.debug( "save : orderEntity saved [{}]", saved );
+
+        OrderPlaced event = new OrderPlaced();
+        event.setId( saved.getId().toString() );
+        event.setCustomerId( saved.getCustomerId() );
+        event.setOrderCreated( LocalDateTime.now().toEpochSecond( ZoneOffset.UTC ) );
+        this.eventPublisher.publishEvent( event );
 
         return saved.getId();
     }

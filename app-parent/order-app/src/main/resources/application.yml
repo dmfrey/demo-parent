@@ -24,6 +24,23 @@ spring:
   mvc:
     log-request-details: true
 
+  cloud:
+
+    stream:
+
+      bindings:
+
+        order-placed-out-0:
+          contentType: application/*+avro
+          destination: order-placed-topic
+
+      schema-registry-client:
+        endpoint: http://localhost:8990
+
+      schema:
+        avro:
+          schema-locations: classpath:avro/order-placed-event.avsc
+
 jdbc:
   datasource-proxy:
     enabled: true
