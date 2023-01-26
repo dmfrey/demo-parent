@@ -22,7 +22,7 @@ class OrderEventsAdapter {
     }
 
     @EventListener
-    void sendOrderPlacedEvent( OrderPlaced event ) {
+    public void sendOrderPlacedEvent( OrderPlaced event ) {
 
         this.streamBridge.send( "order-placed-out-0", event );
         log.info( "sendOrderPlacedEvent : order placed event [{}] sent!", event );
