@@ -52,6 +52,10 @@
                             <contractPackageRegex>.*seed-orders.*</contractPackageRegex>
                             <baseClassFQN>com.vmware.tanzulabs.app.adapter.in.endpoint.SeedOrdersBase</baseClassFQN>
                         </baseClassMapping>
+                        <baseClassMapping>
+                            <contractPackageRegex>.*order-placed.*</contractPackageRegex>
+                            <baseClassFQN>com.vmware.tanzulabs.app.adapter.out.messaging.OrderEventsAdapterContractTestsBase</baseClassFQN>
+                        </baseClassMapping>
                     </baseClassMappings>
                     <outputDirectory>${maven.multiModuleProjectDirectory}/stubs</outputDirectory>
                     <stubsDirectory>${maven.multiModuleProjectDirectory}/stubs</stubsDirectory>

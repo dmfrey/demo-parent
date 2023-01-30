@@ -17,6 +17,12 @@ spring:
   application:
     name: schema-registry
 
+  jpa:
+    hibernate:
+      ddl-auto-create: true
+      ddl-auto: update
+    generate-ddl: true
+
 management:
   endpoints:
     web.exposure.include: '*'

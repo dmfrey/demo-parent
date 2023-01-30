@@ -29,8 +29,8 @@
 		<graalvm.native-maven-plugin.version>0.9.19</graalvm.native-maven-plugin.version>
 
 		<spring-boot.version>3.0.2</spring-boot.version>
-		<spring-cloud.version>2022.0.0</spring-cloud.version>
-		<spring-cloud-contract.version>4.0.0</spring-cloud-contract.version>
+		<spring-cloud.version>2022.0.1</spring-cloud.version>
+		<spring-cloud-contract.version>4.0.1</spring-cloud-contract.version>
 		<groovy.version>4.0.6</groovy.version>
 		<springdoc.version>2.0.2</springdoc.version>
 		<avro.version>1.11.1</avro.version>

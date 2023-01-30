@@ -4,7 +4,9 @@ logging:
   pattern.level: "%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]"
   level:
     org.springframework.cloud.kubernetes: DEBUG
+    org.springframework.cloud.stream: DEBUG
     org.springframework.data: DEBUG
+    org.springframework.integration: DEBUG
     org.springframework.web: DEBUG
     com.vmware.tanzulabs.app: DEBUG
     order-app.query-logger: INFO
@@ -30,8 +32,8 @@ spring:
 
       bindings:
 
-        order-placed-out-0:
-          contentType: application/*+avro
+        orderplaced:
+          content-type: application/*+avro
           destination: order-placed-topic
 
       schema-registry-client:

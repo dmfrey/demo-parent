@@ -1,0 +1,14 @@
+label: should_send_order_placed_notification
+input:
+  triggeredBy: sendOrderPlacedEvent()
+outputMessage:
+  sentTo: order-placed-topic.destination
+  bodyFromFileAsBytes: orderplaced-event.bin
+  headers:
+    contentType: application/vnd.orderplaced.v1+avro
+  matchers:
+    headers:
+      - key: id
+        predefined: uuid
+      - key: timestamp
+        predefined: iso_date_time
